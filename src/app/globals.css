@@ -1,5 +1,9 @@
 @import "tailwindcss";
-
+/* Force hide Next.js dev indicator */
+[id^="__next"] + div,
+body > div:last-child {
+  display: none !important;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;

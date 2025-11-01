@@ -1,13 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, Sparkles, ChevronDown, Menu, X, Download } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Mail, Github, Linkedin, ExternalLink, Code2, Sparkles, ChevronDown, MapPin, Phone, Award, Briefcase, GraduationCap, Zap, Terminal, Rocket, Star } from 'lucide-react';
 
-export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activeProject, setActiveProject] = useState<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -19,356 +17,573 @@ export default function Portfolio() {
 
   const projects = [
     {
-      id: 1,
       title: "AI Influencer Tracker",
-      tagline: "Track & Analyze Social Media Influence",
-      description: "An intelligent system that tracks and analyzes social media influencers, providing insights on engagement metrics, audience demographics, and content performance.",
-      tech: ["Python", "AI APIs", "Data Analytics", "Web Scraping"],
+      description: "Built a comprehensive AI-powered system to track and analyze social media influencers, monitoring engagement metrics, content patterns, and audience demographics across multiple platforms.",
+      tech: ["Python", "AI APIs", "Web Scraping", "Data Analysis", "MongoDB"],
+      outcomes: ["Automated influencer discovery", "Real-time engagement analytics", "Sentiment analysis dashboard"],
+      gradient: "from-purple-600 via-pink-600 to-red-600",
+      icon: "👥",
       github: "https://github.com/shivannadm/AI_Influencer_Tracker",
-      color: "from-purple-500 to-pink-500"
+      highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data"]
     },
     {
-      id: 2,
       title: "AI Stack Showdown",
-      tagline: "Compare AI Frameworks & Tools",
-      description: "A comprehensive comparison platform for evaluating different AI frameworks, models, and tools. Helps developers choose the right tech stack for their AI projects.",
-      tech: ["Next.js", "React", "AI Models", "Comparative Analysis"],
+      description: "Developed an intelligent comparison platform that evaluates and ranks different technology stacks using AI analysis, helping developers make data-driven decisions on framework selection.",
+      tech: ["Next.js", "React", "AI Analysis", "Tailwind CSS", "API Integration"],
+      outcomes: ["Framework comparison engine", "Performance benchmarking", "Interactive visualization"],
+      gradient: "from-blue-600 via-cyan-600 to-teal-600",
+      icon: "⚡",
       github: "https://github.com/shivannadm/ai-stack-showdown",
-      color: "from-blue-500 to-cyan-500"
+      highlights: ["AI-powered analysis", "Real-time comparisons", "Developer insights"]
     },
     {
-      id: 3,
-      title: "Viral Replicator",
-      tagline: "AI-Powered Content Generation",
-      description: "An AI content forge that analyzes viral content patterns and generates optimized posts for social media platforms using machine learning algorithms.",
-      tech: ["Python", "NLP", "OpenAI API", "Content Analysis"],
-      github: "https://github.com/shivannadm/viral-replicator",
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      id: 4,
       title: "AI Mood Journal",
-      tagline: "Emotion Tracking with AI Insights",
-      description: "A personal journaling app that uses AI to analyze emotional patterns, provide mental health insights, and track mood trends over time.",
-      tech: ["React", "AI Sentiment Analysis", "Data Visualization", "Firebase"],
+      description: "Created an intelligent journaling application that uses AI to analyze emotional patterns, provide mood insights, and offer personalized recommendations for mental wellness.",
+      tech: ["Python", "NLP", "Sentiment Analysis", "Django", "AI APIs"],
+      outcomes: ["Emotion tracking", "AI mood analysis", "Personalized insights"],
+      gradient: "from-cyan-600 via-blue-600 to-purple-600",
+      icon: "🧠",
       github: "https://github.com/shivannadm/ai-mood-journal",
-      color: "from-green-500 to-teal-500"
+      highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness"]
+    },
+    {
+      title: "Viral Replicator",
+      description: "Built an AI content generation platform that analyzes viral content patterns and helps creators replicate successful content strategies using machine learning algorithms.",
+      tech: ["AI/ML", "Content Analysis", "Python", "Pattern Recognition", "APIs"],
+      outcomes: ["Viral pattern detection", "Content optimization", "Trend prediction"],
+      gradient: "from-teal-600 via-green-600 to-emerald-600",
+      icon: "🚀",
+      github: "https://github.com/shivannadm/viral-replicator",
+      highlights: ["ML-powered insights", "Trend analysis", "Content strategy"]
     }
   ];
 
-  const skills = [
-    { category: "Languages", items: ["Python", "Java", "JavaScript", "TypeScript"] },
-    { category: "AI/ML", items: ["LSTM", "CNN", "NLP", "OpenAI API"] },
-    { category: "Web Dev", items: ["Next.js", "React", "Django", "Node.js"] },
-    { category: "Databases", items: ["MySQL", "MongoDB", "Firebase"] },
-    { category: "Tools", items: ["Git", "VS Code", "JIRA", "Framer Motion"] }
+  const internships = [
+    {
+      company: "ORANTS",
+      role: "AI Engineer Intern",
+      period: "November 2024 - March 2025",
+      description: "Working on cutting-edge AI projects including influencer tracking, content generation, and intelligent application development.",
+      icon: "🤖"
+    },
+    {
+      company: "Capgemini, NASSCOM Foundation",
+      role: "Data Science Intern",
+      period: "August 2023 - February 2024",
+      description: "Applied data visualization, machine learning, and AI techniques. Gained expertise in data preprocessing, model development, and deployment.",
+      icon: "📊"
+    },
+    {
+      company: "Samsung Innovation Campus",
+      role: "IoT Intern",
+      period: "September 2024 - March 2025",
+      description: "Hands-on experience with IoT, focusing on Raspberry Pi and Python-based automation projects.",
+      icon: "🔌"
+    },
+    {
+      company: "Varcons Technologies",
+      role: "Full-Stack Development Intern",
+      period: "October 2022 - November 2022",
+      description: "Developed responsive web applications using HTML, CSS, JavaScript, and MongoDB. Gained practical frontend and backend experience.",
+      icon: "💻"
+    }
+  ];
+
+  const techStack = {
+    "Languages": ["Python", "Java", "C", "JavaScript"],
+    "AI/ML": ["TensorFlow", "LSTM", "CNN", "NLP", "Sentiment Analysis"],
+    "Web Dev": ["Django", "Next.js", "React", "HTML", "CSS", "JavaScript"],
+    "Databases": ["MySQL", "MongoDB", "Firebase"],
+    "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse"],
+    "Skills": ["Data Science", "IoT", "OOPs", "DBMS", "Agile"]
+  };
+
+  const achievements = [
+    { text: "CGPA: 8.8/10", icon: "🎓" },
+    { text: "88.3% in PU", icon: "📚" },
+    { text: "88.88% in SSLC", icon: "🏆" },
+    { text: "4+ Internships", icon: "💼" },
+    { text: "Multiple AI Projects", icon: "🚀" }
   ];
 
   const scrollToSection = (id: string) => {
-    setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
   };
 
   return (
-    <div className="bg-black text-white min-h-screen relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 z-0">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.3), transparent 50%)`
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute bg-purple-500 rounded-full blur-xl opacity-20"
+            style={{
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `twinkle ${Math.random() * 3 + 2}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 2}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-lg border-b border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
-          >
-            SHIVANNA.AI
-          </motion.div>
+      {/* Custom Cursor Effect */}
+      <div
+        className="fixed w-6 h-6 border-2 border-purple-500 rounded-full pointer-events-none z-50 mix-blend-difference"
+        style={{
+          left: mousePosition.x - 12,
+          top: mousePosition.y - 12,
+          transition: 'all 0.1s ease'
+        }}
+      />
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex gap-8">
-            {['home', 'projects', 'skills', 'about'].map((item) => (
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-40 bg-black/50 backdrop-blur-xl border-b border-purple-500/20">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <Code2 className="w-6 h-6" />
+            </div>
+            <span className="font-bold text-xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Shivanna
+            </span>
+          </div>
+          <div className="hidden md:flex gap-8 text-sm">
+            {['home', 'projects', 'experience', 'tech', 'about'].map((section) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`capitalize hover:text-purple-400 transition-colors ${activeSection === item ? 'text-purple-400' : ''
-                  }`}
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="hover:text-purple-400 transition capitalize relative group"
               >
-                {item}
+                {section}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all" />
               </button>
             ))}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="flex gap-3">
+            <a href="https://github.com/shivannadm" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="https://linkedin.com/in/shivannadm" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
+              <Linkedin className="w-5 h-5" />
+            </a>
+          </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-black/90 backdrop-blur-lg border-t border-purple-500/20"
-          >
-            {['home', 'projects', 'skills', 'about'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className="block w-full text-left px-6 py-4 capitalize hover:bg-purple-500/10"
-              >
-                {item}
-              </button>
-            ))}
-          </motion.div>
-        )}
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative z-10 min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="flex justify-center mb-6">
-              <Sparkles className="w-16 h-16 text-purple-400" />
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
+        <div className="relative z-10 text-center max-w-5xl">
+          {/* Animated Profile */}
+          <div className="mb-8 flex justify-center">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full blur-2xl opacity-50 animate-pulse" />
+              <div className="relative w-40 h-40 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full p-1 animate-spin-slow">
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-6xl font-bold">
+                  S
+                </div>
+              </div>
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              SHIVANNA
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              AI Engineer | Full-Stack Developer
-            </p>
-            <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-              Building intelligent systems that bridge creativity and technology.
-              Specialized in AI/ML, web development, and data-driven solutions.
-            </p>
+          </div>
 
-            <div className="flex justify-center gap-6 mb-12">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://github.com/shivannadm"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-purple-500/20 rounded-full hover:bg-purple-500/30 transition-colors"
-              >
-                <Github className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://linkedin.com/in/shivannadm"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-blue-500/20 rounded-full hover:bg-blue-500/30 transition-colors"
-              >
-                <Linkedin className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                href="mailto:shivannadm16@gmail.com"
-                className="p-3 bg-pink-500/20 rounded-full hover:bg-pink-500/30 transition-colors"
-              >
-                <Mail className="w-6 h-6" />
-              </motion.a>
-            </div>
+          <div className="mb-6 flex justify-center gap-3 flex-wrap">
+            {achievements.slice(0, 3).map((achievement, idx) => (
+              <div key={idx} className="bg-purple-900/30 border border-purple-500/30 rounded-full px-4 py-2 text-sm backdrop-blur-sm flex items-center gap-2">
+                <span>{achievement.icon}</span>
+                <span>{achievement.text}</span>
+              </div>
+            ))}
+          </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection('projects')}
-              className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+          <h1 className="text-7xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
+            SHIVANNA
+          </h1>
+
+          <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
+            <Terminal className="w-6 h-6 text-purple-400 animate-pulse" />
+            <p className="text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
+              AI Engineer & Full-Stack Developer
+            </p>
+            <Rocket className="w-6 h-6 text-cyan-400 animate-bounce" />
+          </div>
+
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Crafting intelligent solutions at the intersection of <span className="text-purple-400 font-semibold">AI</span> and modern <span className="text-cyan-400 font-semibold">web development</span>.
+            Building the future, one line of code at a time.
+          </p>
+
+          <div className="flex items-center justify-center gap-2 text-gray-400 mb-8 flex-wrap">
+            <MapPin className="w-4 h-4" />
+            <span>Bengaluru, Karnataka</span>
+            <span className="mx-2">•</span>
+            <Phone className="w-4 h-4" />
+            <span>+91 8197753351</span>
+          </div>
+
+          <div className="flex gap-4 justify-center mb-12 flex-wrap">
+            <a
+              href="mailto:shivannadm16@gmail.com"
+              className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110 shadow-lg shadow-purple-500/50"
             >
-              Explore My Work
-            </motion.button>
-          </motion.div>
+              <Mail className="w-5 h-5 group-hover:rotate-12 transition" />
+              <span className="font-semibold">Get In Touch</span>
+            </a>
+            <a
+              href="https://github.com/shivannadm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-2 border-cyan-500 hover:bg-cyan-500/20 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110"
+            >
+              <Github className="w-5 h-5 group-hover:rotate-12 transition" />
+              <span className="font-semibold">View GitHub</span>
+            </a>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="group border-2 border-purple-500 hover:bg-purple-500/20 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110"
+            >
+              <Sparkles className="w-5 h-5 group-hover:rotate-12 transition" />
+              <span className="font-semibold">See Projects</span>
+            </button>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          <button
+            onClick={() => scrollToSection('projects')}
+            className="animate-bounce text-purple-400 hover:text-purple-300 transition"
           >
-            <ChevronDown className="w-8 h-8 animate-bounce text-purple-400" />
-          </motion.div>
+            <ChevronDown className="w-10 h-10 mx-auto" />
+          </button>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative z-10 py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+      <section id="projects" className="relative min-h-screen py-20 px-6">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block bg-purple-900/30 border border-purple-500/30 rounded-full px-6 py-2 mb-4">
+              <span className="text-purple-400 font-semibold">🚀 MY WORK</span>
+            </div>
+            <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Featured Projects
             </h2>
-            <p className="text-gray-400 text-lg">AI-powered solutions built during my internship @ ORANTS</p>
-          </motion.div>
+            <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+              AI-powered solutions built with cutting-edge technologies
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group relative bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all"
+            {projects.map((project, idx) => (
+              <div
+                key={idx}
+                onMouseEnter={() => setActiveProject(idx)}
+                onMouseLeave={() => setActiveProject(null)}
+                className="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-3xl p-8 hover:border-purple-500/60 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`} />
+                {/* Gradient Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`} />
 
+                {/* Content */}
                 <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <Code2 className="w-8 h-8 text-purple-400" />
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="text-4xl">{project.icon}</div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-purple-300 group-hover:text-purple-200 transition">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <Star className={`w-6 h-6 transition-all duration-300 ${activeProject === idx ? 'text-yellow-400 rotate-180 scale-125' : 'text-gray-600'}`} />
+                  </div>
 
+                  <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+
+                  {/* Highlights */}
+                  <div className="mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.highlights.map((highlight, i) => (
+                        <span key={i} className="bg-cyan-900/30 text-cyan-300 px-3 py-1 rounded-full text-xs border border-cyan-500/30 flex items-center gap-1">
+                          <Zap className="w-3 h-3" />
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Technologies */}
+                  <div className="mb-6">
+                    <p className="text-sm text-purple-400 font-semibold mb-3 flex items-center gap-2">
+                      <Code2 className="w-4 h-4" />
+                      Technologies:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="bg-purple-900/40 text-purple-200 px-4 py-2 rounded-lg text-sm border border-purple-500/30 hover:border-purple-500/60 transition"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Outcomes */}
+                  <div className="mb-6">
+                    <p className="text-sm text-cyan-400 font-semibold mb-3 flex items-center gap-2">
+                      <Award className="w-4 h-4" />
+                      Key Outcomes:
+                    </p>
+                    <ul className="space-y-2">
+                      {project.outcomes.map((outcome, i) => (
+                        <li key={i} className="flex items-center gap-3 text-gray-400">
+                          <span className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full" />
+                          {outcome}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* GitHub Link */}
+                  <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-purple-500/20 rounded-lg hover:bg-purple-500/30 transition-colors"
-                    <a>
-                    <ExternalLink className="w-5 h-5" />
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 px-6 py-3 rounded-full text-sm font-semibold transition transform hover:scale-105 shadow-lg"
+                  >
+                    <Github className="w-4 h-4" />
+                    View on GitHub
+                    <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                <p className="text-purple-400 text-sm mb-3">{project.tagline}</p>
-                <p className="text-gray-300 mb-4">{project.description}</p>
+      {/* Experience Section */}
+      <section id="experience" className="relative min-h-screen py-20 px-6 bg-gradient-to-b from-black to-purple-900/10">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block bg-cyan-900/30 border border-cyan-500/30 rounded-full px-6 py-2 mb-4">
+              <span className="text-cyan-400 font-semibold">💼 CAREER PATH</span>
+            </div>
+            <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              Work Experience
+            </h2>
+            <p className="text-gray-400 text-xl">Building expertise through diverse internships</p>
+          </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
+          <div className="grid md:grid-cols-2 gap-6">
+            {internships.map((internship, idx) => (
+              <div
+                key={idx}
+                className="group bg-gradient-to-br from-gray-900 to-black border border-cyan-500/20 rounded-2xl p-6 hover:border-cyan-500/60 transition-all hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl group-hover:scale-110 transition">{internship.icon}</div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-cyan-300 mb-1">{internship.company}</h3>
+                    <p className="text-purple-400 font-semibold mb-2">{internship.role}</p>
+                    <p className="text-gray-500 text-sm mb-3">{internship.period}</p>
+                    <p className="text-gray-300 text-sm leading-relaxed">{internship.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Education */}
+          <div className="mt-16">
+            <h3 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Education
+            </h3>
+            <div className="bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-2xl p-8 max-w-3xl mx-auto">
+              <div className="flex items-center gap-4 mb-6">
+                <GraduationCap className="w-12 h-12 text-purple-400" />
+                <div>
+                  <h4 className="text-2xl font-bold text-purple-300">Bachelor of Engineering</h4>
+                  <p className="text-cyan-400">Information Science and Engineering</p>
+                </div>
+              </div>
+              <p className="text-gray-300 mb-2">Cambridge Institute of Technology, Bengaluru | VTU</p>
+              <p className="text-lg font-semibold text-purple-400">CGPA: 8.8/10 | 2021 - 2025</p>
+              <div className="mt-4 pt-4 border-t border-purple-500/20">
+                <p className="text-gray-400">Core: Computer Networks, Operating Systems, DBMS, Data Structures, OOPs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section id="tech" className="relative min-h-screen py-20 px-6">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block bg-purple-900/30 border border-purple-500/30 rounded-full px-6 py-2 mb-4">
+              <span className="text-purple-400 font-semibold">⚡ SKILLS</span>
+            </div>
+            <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Tech Arsenal
+            </h2>
+            <p className="text-gray-400 text-xl">Tools and technologies I've mastered</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {Object.entries(techStack).map(([category, items], idx) => (
+              <div
+                key={idx}
+                className="group bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-2xl p-6 hover:border-purple-500/60 transition-all hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20"
+              >
+                <h3 className="text-2xl font-bold text-purple-400 mb-6 flex items-center gap-2">
+                  <Zap className="w-6 h-6 group-hover:text-yellow-400 transition" />
+                  {category}
+                </h3>
+                <div className="space-y-3">
+                  {items.map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-gray-300 group-hover:text-white transition">
+                      <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full group-hover:scale-150 transition" />
+                      <span className="font-medium">{item}</span>
+                    </div>
                   ))}
                 </div>
               </div>
-              </motion.div>
             ))}
-        </div>
-    </div>
-      </section >
+          </div>
 
-    {/* Skills Section */ }
-    < section id = "skills" className = "relative z-10 py-20 px-6 bg-gradient-to-b from-black via-purple-900/10 to-black" >
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            Tech Arsenal
-          </h2>
-          <p className="text-gray-400 text-lg">Tools and technologies I work with</p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.category}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-xl p-6 border border-blue-500/20 hover:border-blue-500/50 transition-all"
-            >
-              <Brain className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-blue-400">{skill.category}</h3>
-              <ul className="space-y-2">
-                {skill.items.map((item) => (
-                  <li key={item} className="text-gray-300 text-sm">{item}</li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-      </section >
-
-    {/* About Section */ }
-    < section id = "about" className = "relative z-10 py-20 px-6" >
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h2 className="text-5xl font-bold mb-8 bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
-            About Me
-          </h2>
-          <div className="bg-gradient-to-br from-green-900/20 to-teal-900/20 rounded-2xl p-8 border border-green-500/20">
-            <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-              I'm a final-year Information Science Engineering student at Cambridge Institute of Technology
-              with a passion for building intelligent systems. My journey spans AI/ML, full-stack development,
-              and data science, with hands-on experience from internships at Capgemini and Samsung Innovation Campus.
-            </p>
-            <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-              Currently interning at ORANTS, where I've developed cutting-edge AI projects including influencer
-              tracking systems, content generation tools, and sentiment analysis applications. I love exploring
-              the intersection of creativity and technology.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="mailto:shivannadm16@gmail.com"
-                className="px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-full font-semibold hover:shadow-lg hover:shadow-green-500/50 transition-all"
-              >
-                Get In Touch
-              </motion.a>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white/10 border border-white/20 rounded-full font-semibold hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-              >
-                <Download className="w-5 h-5" />
-                Download Resume
-              </motion.button>
+          {/* Certifications */}
+          <div className="mt-16 bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold mb-6 text-center text-cyan-400 flex items-center justify-center gap-2">
+              <Award className="w-8 h-8" />
+              Certifications
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                "Data Science & ML - FutureSkills Prime",
+                "Employability Skills - Wadhwani Foundation",
+                "RDBMS & MySQL - SpringBoard",
+                "Scrum Project Management - Atlassian"
+              ].map((cert, idx) => (
+                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-purple-900/20 rounded-lg p-3 border border-purple-500/20">
+                  <Award className="w-5 h-5 text-purple-400" />
+                  <span>{cert}</span>
+                </div>
+              ))}
             </div>
           </div>
-        </motion.div>
-      </div>
-      </section >
+        </div>
+      </section>
 
-    {/* Footer */ }
-    < footer className = "relative z-10 py-8 px-6 border-t border-purple-500/20" >
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="text-gray-400">
-          Built with Next.js, Tailwind CSS & Framer Motion | © 2025 Shivanna
-        </p>
-        <p className="text-gray-500 text-sm mt-2">
-          Bengaluru, Karnataka | AI Engineer Intern @ ORANTS
-        </p>
-      </div>
-      </footer >
-    </div >
+      {/* About Section */}
+      <section id="about" className="relative min-h-screen py-20 px-6 flex items-center bg-gradient-to-b from-purple-900/10 to-black">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-block bg-purple-900/30 border border-purple-500/30 rounded-full px-6 py-2 mb-8">
+            <span className="text-purple-400 font-semibold">👋 GET TO KNOW ME</span>
+          </div>
+
+          <h2 className="text-6xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            About Me
+          </h2>
+
+          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+            I'm <span className="text-purple-400 font-bold">Shivanna</span>, an AI Engineer and Full-Stack Developer passionate about leveraging cutting-edge technologies to build innovative solutions.
+          </p>
+
+          <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+            Currently pursuing my B.E. in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
+            Through multiple internships at <span className="text-cyan-400">ORANTS, Capgemini, Samsung Innovation Campus, and Varcons Technologies</span>,
+            I've gained hands-on experience in AI/ML, IoT, data science, and full-stack development.
+          </p>
+
+          <p className="text-lg text-gray-400 mb-12 leading-relaxed">
+            I thrive at the intersection of <span className="text-purple-400 font-semibold">artificial intelligence</span> and <span className="text-cyan-400 font-semibold">modern web development</span>,
+            constantly pushing boundaries to create impactful digital experiences that solve real-world problems.
+          </p>
+
+          <div className="flex gap-6 justify-center mb-12 flex-wrap">
+            <a
+              href="mailto:shivannadm16@gmail.com"
+              className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full transition transform hover:scale-110 shadow-lg shadow-purple-500/50"
+            >
+              <Mail className="w-5 h-5" />
+              <span className="font-semibold">shivannadm16@gmail.com</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/shivannadm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 border-2 border-cyan-500 hover:bg-cyan-500/20 px-8 py-4 rounded-full transition transform hover:scale-110"
+            >
+              <Linkedin className="w-5 h-5" />
+              <span className="font-semibold">LinkedIn</span>
+            </a>
+            <a
+              href="https://github.com/shivannadm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 border-2 border-purple-500 hover:bg-purple-500/20 px-8 py-4 rounded-full transition transform hover:scale-110"
+            >
+              <Github className="w-5 h-5" />
+              <span className="font-semibold">GitHub</span>
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+            {achievements.map((achievement, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-purple-900/30 to-cyan-900/30 border border-purple-500/30 rounded-xl p-4 hover:border-purple-500/60 transition hover:transform hover:scale-110">
+                <div className="text-3xl mb-2">{achievement.icon}</div>
+                <div className="text-sm text-gray-300 font-semibold">{achievement.text}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t border-purple-500/30 pt-8 mt-12">
+            <p className="text-gray-400 mb-2">
+              Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span>
+            </p>
+            <p className="text-gray-500 text-sm">
+              © 2025 Shivanna. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Floating Action Button */}
+      <button
+        onClick={() => scrollToSection('home')}
+        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50 transition transform hover:scale-110 group"
+      >
+        <ChevronDown className="w-6 h-6 rotate-180 group-hover:animate-bounce" />
+      </button>
+
+      <style jsx>{`
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.5); }
+        }
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        .animate-spin-slow {
+          animation: spin 8s linear infinite;
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+export default Portfolio;
