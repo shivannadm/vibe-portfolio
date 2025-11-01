@@ -32,13 +32,13 @@ const Portfolio = () => {
     {
       title: "AI Mood Journal",
       description: "Created an intelligent journaling application that uses AI to analyze emotional patterns, provide mood insights, and offer personalized recommendations for mental wellness.",
-      tech: ["Python", "Sentiment analysis", "Expo Go", "Next.js", "AI APIs","React native","Firebase"],
+      tech: ["Python", "Sentiment analysis", "Expo Go", "Next.js", "AI APIs", "React native", "Firebase"],
       outcomes: ["Emotion tracking", "AI mood analysis", "Personalized insights"],
       gradient: "from-cyan-600 via-blue-600 to-purple-600",
       icon: "🧠",
       github: "https://github.com/shivannadm/ai-mood-journal",
       live: "https://expo.dev/accounts/shivanna/projects/ai-mood-journal/builds/526fce69-df06-4401-acba-ba814f1b3db3",
-      highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness"," AI recommendations","Track emotional trends"]
+      highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness", " AI recommendations", "Track emotional trends"]
     },
     {
       title: "Viral Replicator",
@@ -132,8 +132,8 @@ const Portfolio = () => {
     "Languages": ["Java", "Python", "C", "JavaScript"],
     "AI/ML": ["TensorFlow", "Langchain", "CNN", "Pandas", "Numpy", "Scikit-learn"],
     "Web Dev": ["Django", "Next.js", "React", "HTML", "CSS", "JavaScript"],
-    "Databases": ["MySQL", "MongoDB", "Firebase","API Integration"],
-    "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse","n8n Engine"],
+    "Databases": ["MySQL", "MongoDB", "Firebase", "API Integration"],
+    "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse", "n8n Engine"],
     "Skills": ["Data Science", "AI Automation", "Data Structure", "OOPs", "DBMS", "Operating System"]
   };
 
@@ -174,12 +174,17 @@ const Portfolio = () => {
       <nav className="fixed top-0 w-full z-40 bg-black/50 backdrop-blur-xl border-b border-purple-500/20">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <Code2 className="w-6 h-6" />
-            </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Shivanna
-            </span>
+            <button
+              onClick={() => scrollToSection('home')}
+              className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <Code2 className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                Shivanna
+              </span>
+            </button>
           </div>
           <div className="hidden md:flex gap-8 text-sm">
             {['home', 'projects', 'experience', 'tech', 'about'].map((section) => (
@@ -217,48 +222,48 @@ const Portfolio = () => {
       <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="relative z-10 text-center max-w-5xl">
           {/* Profile Photo */}
-<div className="mb-8 flex justify-center">
-  <div className="relative inline-block">
-    {/* Photo with Smooth Wave Bottom */}
-    <div className="relative z-10">
-      <svg className="w-56" viewBox="0 -10 224 280" style={{ display: 'block' }}>
-        <defs>
-          <clipPath id="wave-bottom">
-            <path d="M 0,0 L 350,0 L 245,300 Q 160,170 110,236 Q 137,210 105,241 Q 80,265 50,230 Q 20,180 0,210 Z" />
-          </clipPath>
-          
+          <div className="mb-8 flex justify-center">
+            <div className="relative inline-block">
+              {/* Photo with Smooth Wave Bottom */}
+              <div className="relative z-10">
+                <svg className="w-56" viewBox="0 -10 224 280" style={{ display: 'block' }}>
+                  <defs>
+                    <clipPath id="wave-bottom">
+                      <path d="M 0,0 L 350,0 L 245,300 Q 160,170 110,236 Q 137,210 105,241 Q 80,265 50,230 Q 20,180 0,210 Z" />
+                    </clipPath>
 
-          {/* Alternative: Multi-color gradient */}
-          <linearGradient id="rainbow-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="70%" stopColor="transparent" />
-            <stop offset="85%" stopColor="rgba(168, 85, 247, 0.4)" /> {/* purple */}
-            <stop offset="92%" stopColor="rgba(236, 72, 153, 0.4)" /> {/* pink */}
-            <stop offset="100%" stopColor="rgba(34, 211, 238, 0.5)" /> {/* cyan */}
-          </linearGradient>
-         
-        </defs>
-        <image 
-          href="/assets/about-pic2.png" 
-          width="230" 
-          height="280" 
-          clipPath="url(#wave-bottom)"
-          preserveAspectRatio="xMidYMin slice"
-        />
-        {/* Gradient overlay at bottom */}
-        <rect 
-          width="224" 
-          height="280" 
-          fill="url(#bottom-gradient)" 
-          clipPath="url(#wave-bottom)"
-        />
-      </svg>
-    </div>
-    
-    {/* Gradient Glow Behind Bottom Only */}
-    <div className="absolute bottom-0 left-0 right-0 h-70 bg-gradient-to-t from-purple-500 via-pink-500 to-transparent blur-2xl opacity-60 -z-10" />
-  </div>
-</div>
+
+                    {/* Alternative: Multi-color gradient */}
+                    <linearGradient id="rainbow-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="transparent" />
+                      <stop offset="70%" stopColor="transparent" />
+                      <stop offset="85%" stopColor="rgba(168, 85, 247, 0.4)" /> {/* purple */}
+                      <stop offset="92%" stopColor="rgba(236, 72, 153, 0.4)" /> {/* pink */}
+                      <stop offset="100%" stopColor="rgba(34, 211, 238, 0.5)" /> {/* cyan */}
+                    </linearGradient>
+
+                  </defs>
+                  <image
+                    href="/assets/about-pic2.png"
+                    width="230"
+                    height="280"
+                    clipPath="url(#wave-bottom)"
+                    preserveAspectRatio="xMidYMin slice"
+                  />
+                  {/* Gradient overlay at bottom */}
+                  <rect
+                    width="224"
+                    height="280"
+                    fill="url(#bottom-gradient)"
+                    clipPath="url(#wave-bottom)"
+                  />
+                </svg>
+              </div>
+
+              {/* Gradient Glow Behind Bottom Only */}
+              <div className="absolute bottom-0 left-0 right-0 h-70 bg-gradient-to-t from-purple-500 via-pink-500 to-transparent blur-2xl opacity-60 -z-10" />
+            </div>
+          </div>
 
           <div className="mb-6 flex justify-center gap-3 flex-wrap">
             {achievements.slice(0, 3).map((achievement, idx) => (
@@ -642,7 +647,14 @@ const Portfolio = () => {
               Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span>
             </p>
             <p className="text-gray-500 text-sm">
-              This portofolio website built as a part of Internship task @ ORANTS AI.
+              This portfolio website built as a part of Internship task @ <a
+                href="https://orants.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
+              >
+                ORANTS.AI
+              </a>.
             </p>
           </div>
         </div>
