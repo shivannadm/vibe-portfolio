@@ -1,14 +1,15 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
-import { Mail, Github, Linkedin, ExternalLink, Code2, Sparkles, ChevronDown, MapPin, Phone, Award, Briefcase, GraduationCap, Zap, Terminal, Rocket, Star } from 'lucide-react';
+import { Mail, Github, Linkedin, ExternalLink, Code2, Sparkles, ChevronDown, MapPin, Phone, Award, Briefcase, GraduationCap, Zap, Terminal, Rocket, Star, Download, Globe, Play } from 'lucide-react';
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [activeProject, setActiveProject] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    setIsMounted(true);
+    const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
@@ -16,16 +17,7 @@ const Portfolio = () => {
   }, []);
 
   const projects = [
-    {
-      title: "AI Influencer Tracker",
-      description: "Built a comprehensive AI-powered system to track and analyze social media influencers, monitoring engagement metrics, content patterns, and audience demographics across multiple platforms.",
-      tech: ["Python", "AI APIs", "Web Scraping", "Data Analysis", "MongoDB"],
-      outcomes: ["Automated influencer discovery", "Real-time engagement analytics", "Sentiment analysis dashboard"],
-      gradient: "from-purple-600 via-pink-600 to-red-600",
-      icon: "👥",
-      github: "https://github.com/shivannadm/AI_Influencer_Tracker",
-      highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data"]
-    },
+
     {
       title: "AI Stack Showdown",
       description: "Developed an intelligent comparison platform that evaluates and ranks different technology stacks using AI analysis, helping developers make data-driven decisions on framework selection.",
@@ -34,6 +26,7 @@ const Portfolio = () => {
       gradient: "from-blue-600 via-cyan-600 to-teal-600",
       icon: "⚡",
       github: "https://github.com/shivannadm/ai-stack-showdown",
+      live: "https://ai-stack-showdown.vercel.app/",
       highlights: ["AI-powered analysis", "Real-time comparisons", "Developer insights"]
     },
     {
@@ -44,6 +37,7 @@ const Portfolio = () => {
       gradient: "from-cyan-600 via-blue-600 to-purple-600",
       icon: "🧠",
       github: "https://github.com/shivannadm/ai-mood-journal",
+      live: "https://expo.dev/accounts/shivanna/projects/ai-mood-journal/builds/526fce69-df06-4401-acba-ba814f1b3db3",
       highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness"]
     },
     {
@@ -54,7 +48,19 @@ const Portfolio = () => {
       gradient: "from-teal-600 via-green-600 to-emerald-600",
       icon: "🚀",
       github: "https://github.com/shivannadm/viral-replicator",
+      live: "https://viral-replicator.vercel.app/",
       highlights: ["ML-powered insights", "Trend analysis", "Content strategy"]
+    },
+    {
+      title: "AI Influencer Tracker",
+      description: "Built a comprehensive AI-powered system to track and analyze social media influencers, monitoring engagement metrics, content patterns, and audience demographics across multiple platforms.",
+      tech: ["Python", "AI APIs", "Web Scraping", "Data Analysis", "MongoDB"],
+      outcomes: ["Automated influencer discovery", "Real-time engagement analytics", "Sentiment analysis dashboard"],
+      gradient: "from-purple-600 via-pink-600 to-red-600",
+      icon: "👥",
+      github: "https://github.com/shivannadm/AI_Influencer_Tracker",
+      live: "https://github.com/shivannadm/AI_Influencer_Tracker/tree/main/n8n_workflow",
+      highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data"]
     }
   ];
 
@@ -89,6 +95,39 @@ const Portfolio = () => {
     }
   ];
 
+  const education = [
+    {
+      degree: "Bachelor of Engineering",
+      field: "Information Science and Engineering",
+      institution: "Cambridge Institute of Technology, Bengaluru",
+      board: "VTU",
+      period: "2021 - 2025",
+      score: "CGPA: 8.8/10",
+      icon: "🎓",
+      details: "Computer Networks, Operating Systems, DBMS, Data Structures, OOPs"
+    },
+    {
+      degree: "Pre-University",
+      field: "Computer Science",
+      institution: "MDR PU College of Science Deodurga, Raichur",
+      board: "KREIS",
+      period: "2019 - 2021",
+      score: "Percentage: 88.3%",
+      icon: "📚",
+      details: ""
+    },
+    {
+      degree: "SSLC",
+      field: "Secondary Education",
+      institution: "GBH School Jalahalli, Raichur",
+      board: "Karnataka Secondary Education Board",
+      period: "2018 - 2019",
+      score: "Percentage: 88.88%",
+      icon: "🏫",
+      details: ""
+    }
+  ];
+
   const techStack = {
     "Languages": ["Python", "Java", "C", "JavaScript"],
     "AI/ML": ["TensorFlow", "LSTM", "CNN", "NLP", "Sentiment Analysis"],
@@ -106,16 +145,16 @@ const Portfolio = () => {
     { text: "Multiple AI Projects", icon: "🚀" }
   ];
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-black text-white overflow-hidden cursor-default">
       {/* Animated Background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
-        {[...Array(50)].map((_, i) => (
+        {isMounted && [...Array(50)].map((_, i) => (
           <div
             key={i}
             className="absolute bg-purple-500 rounded-full blur-xl opacity-20"
@@ -130,16 +169,6 @@ const Portfolio = () => {
           />
         ))}
       </div>
-
-      {/* Custom Cursor Effect */}
-      <div
-        className="fixed w-6 h-6 border-2 border-purple-500 rounded-full pointer-events-none z-50 mix-blend-difference"
-        style={{
-          left: mousePosition.x - 12,
-          top: mousePosition.y - 12,
-          transition: 'all 0.1s ease'
-        }}
-      />
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-40 bg-black/50 backdrop-blur-xl border-b border-purple-500/20">
@@ -165,10 +194,19 @@ const Portfolio = () => {
             ))}
           </div>
           <div className="flex gap-3">
-            <a href="https://github.com/shivannadm" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
+            <a
+              href="https://shivanna-portfolio.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-400 transition transform hover:scale-110"
+              title="Main Portfolio"
+            >
+              <Globe className="w-5 h-5" />
+            </a>
+            <a href="https://github.com/shivannadm" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition transform hover:scale-110">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com/in/shivannadm" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
+            <a href="https://linkedin.com/in/shivannadm" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition transform hover:scale-110">
               <Linkedin className="w-5 h-5" />
             </a>
           </div>
@@ -178,13 +216,17 @@ const Portfolio = () => {
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="relative z-10 text-center max-w-5xl">
-          {/* Animated Profile */}
+          {/* Profile Photo */}
           <div className="mb-8 flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full blur-2xl opacity-50 animate-pulse" />
-              <div className="relative w-40 h-40 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full p-1 animate-spin-slow">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-6xl font-bold">
-                  S
+              <div className="relative w-40 h-40 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full p-1">
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+                  <img
+                    src="/assets/about-pic2.jpg"
+                    alt="Shivanna"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -239,15 +281,26 @@ const Portfolio = () => {
               className="group border-2 border-cyan-500 hover:bg-cyan-500/20 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110"
             >
               <Github className="w-5 h-5 group-hover:rotate-12 transition" />
-              <span className="font-semibold">View GitHub</span>
+              <span className="font-semibold">GitHub</span>
             </a>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="group border-2 border-purple-500 hover:bg-purple-500/20 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110"
+            <a
+              href="https://linkedin.com/in/shivannadm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-2 border-blue-500 hover:bg-blue-500/20 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110"
             >
-              <Sparkles className="w-5 h-5 group-hover:rotate-12 transition" />
-              <span className="font-semibold">See Projects</span>
-            </button>
+              <Linkedin className="w-5 h-5 group-hover:rotate-12 transition" />
+              <span className="font-semibold">LinkedIn</span>
+            </a>
+            <a
+              href="/assets/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-2 border-green-500 hover:bg-green-500/20 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110"
+            >
+              <Download className="w-5 h-5 group-hover:rotate-12 transition" />
+              <span className="font-semibold">Resume</span>
+            </a>
           </div>
 
           <button
@@ -274,24 +327,22 @@ const Portfolio = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, idx) => (
               <div
                 key={idx}
                 onMouseEnter={() => setActiveProject(idx)}
                 onMouseLeave={() => setActiveProject(null)}
-                className="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-3xl p-8 hover:border-purple-500/60 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30"
+                className="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-3xl p-6 hover:border-purple-500/60 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30"
               >
-                {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`} />
 
-                {/* Content */}
                 <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="text-4xl">{project.icon}</div>
+                      <div className="text-3xl">{project.icon}</div>
                       <div>
-                        <h3 className="text-2xl font-bold text-purple-300 group-hover:text-purple-200 transition">
+                        <h3 className="text-xl font-bold text-purple-300 group-hover:text-purple-200 transition">
                           {project.title}
                         </h3>
                       </div>
@@ -299,13 +350,12 @@ const Portfolio = () => {
                     <Star className={`w-6 h-6 transition-all duration-300 ${activeProject === idx ? 'text-yellow-400 rotate-180 scale-125' : 'text-gray-600'}`} />
                   </div>
 
-                  <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
 
-                  {/* Highlights */}
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="mb-3">
+                    <div className="flex flex-wrap gap-2 mb-3">
                       {project.highlights.map((highlight, i) => (
-                        <span key={i} className="bg-cyan-900/30 text-cyan-300 px-3 py-1 rounded-full text-xs border border-cyan-500/30 flex items-center gap-1">
+                        <span key={i} className="bg-cyan-900/30 text-cyan-300 px-2 py-1 rounded-full text-xs border border-cyan-500/30 flex items-center gap-1">
                           <Zap className="w-3 h-3" />
                           {highlight}
                         </span>
@@ -313,51 +363,55 @@ const Portfolio = () => {
                     </div>
                   </div>
 
-                  {/* Technologies */}
-                  <div className="mb-6">
-                    <p className="text-sm text-purple-400 font-semibold mb-3 flex items-center gap-2">
-                      <Code2 className="w-4 h-4" />
+                  <div className="mb-4">
+                    <p className="text-xs text-purple-400 font-semibold mb-2 flex items-center gap-2">
+                      <Code2 className="w-3 h-3" />
                       Technologies:
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="bg-purple-900/40 text-purple-200 px-4 py-2 rounded-lg text-sm border border-purple-500/30 hover:border-purple-500/60 transition"
-                        >
+                        <span key={i} className="bg-purple-900/40 text-purple-200 px-3 py-1 rounded-lg text-xs border border-purple-500/30 hover:border-purple-500/60 transition">
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Outcomes */}
-                  <div className="mb-6">
-                    <p className="text-sm text-cyan-400 font-semibold mb-3 flex items-center gap-2">
-                      <Award className="w-4 h-4" />
+                  <div className="mb-4">
+                    <p className="text-xs text-cyan-400 font-semibold mb-2 flex items-center gap-2">
+                      <Award className="w-3 h-3" />
                       Key Outcomes:
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1">
                       {project.outcomes.map((outcome, i) => (
-                        <li key={i} className="flex items-center gap-3 text-gray-400">
-                          <span className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full" />
+                        <li key={i} className="flex items-center gap-2 text-gray-400 text-xs">
+                          <span className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full" />
                           {outcome}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* GitHub Link */}
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 px-6 py-3 rounded-full text-sm font-semibold transition transform hover:scale-105 shadow-lg"
-                  >
-                    <Github className="w-4 h-4" />
-                    View on GitHub
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                  <div className="flex gap-3 flex-wrap">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 px-4 py-2 rounded-full text-xs font-semibold transition transform hover:scale-105 shadow-lg"
+                    >
+                      <Github className="w-3 h-3" />
+                      GitHub
+                    </a>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-4 py-2 rounded-full text-xs font-semibold transition transform hover:scale-105 shadow-lg"
+                    >
+                      <Play className="w-3 h-3" />
+                      Live Demo
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -397,24 +451,38 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Education */}
-          <div className="mt-16">
-            <h3 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Education
+          {/* Education Timeline */}
+          <div className="mt-20">
+            <h3 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Education Journey
             </h3>
-            <div className="bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-2xl p-8 max-w-3xl mx-auto">
-              <div className="flex items-center gap-4 mb-6">
-                <GraduationCap className="w-12 h-12 text-purple-400" />
-                <div>
-                  <h4 className="text-2xl font-bold text-purple-300">Bachelor of Engineering</h4>
-                  <p className="text-cyan-400">Information Science and Engineering</p>
+            <div className="max-w-4xl mx-auto relative">
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-cyan-500 to-green-500" />
+
+              {education.map((edu, idx) => (
+                <div key={idx} className="relative mb-12 last:mb-0">
+                  <div className="absolute left-8 top-6 w-4 h-4 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full -ml-2 border-4 border-black z-10" />
+
+                  <div className="ml-20 bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-2xl p-6 hover:border-purple-500/60 transition-all hover:shadow-xl hover:shadow-purple-500/20">
+                    <div className="flex items-start gap-4">
+                      <div className="text-3xl">{edu.icon}</div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-purple-300 mb-1">{edu.degree}</h4>
+                        <p className="text-cyan-400 font-semibold mb-2">{edu.field}</p>
+                        <p className="text-gray-300 text-sm mb-1">{edu.institution}</p>
+                        <p className="text-gray-400 text-sm mb-2">{edu.board}</p>
+                        <div className="flex items-center gap-4 mb-2">
+                          <p className="text-gray-500 text-sm">{edu.period}</p>
+                          <p className="text-lg font-semibold text-purple-400">{edu.score}</p>
+                        </div>
+                        {edu.details && (
+                          <p className="text-gray-400 text-sm mt-2 pt-2 border-t border-purple-500/20">{edu.details}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <p className="text-gray-300 mb-2">Cambridge Institute of Technology, Bengaluru | VTU</p>
-              <p className="text-lg font-semibold text-purple-400">CGPA: 8.8/10 | 2021 - 2025</p>
-              <div className="mt-4 pt-4 border-t border-purple-500/20">
-                <p className="text-gray-400">Core: Computer Networks, Operating Systems, DBMS, Data Structures, OOPs</p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -430,7 +498,7 @@ const Portfolio = () => {
             <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Tech Arsenal
             </h2>
-            <p className="text-gray-400 text-xl">Tools and technologies I've mastered</p>
+            <p className="text-gray-400 text-xl">Tools and technologies I have mastered</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -490,13 +558,13 @@ const Portfolio = () => {
           </h2>
 
           <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            I'm <span className="text-purple-400 font-bold">Shivanna</span>, an AI Engineer and Full-Stack Developer passionate about leveraging cutting-edge technologies to build innovative solutions.
+            I am <span className="text-purple-400 font-bold">Shivanna</span>, an AI Engineer and Full-Stack Developer passionate about leveraging cutting-edge technologies to build innovative solutions.
           </p>
 
           <p className="text-lg text-gray-400 mb-8 leading-relaxed">
             Currently pursuing my B.E. in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
             Through multiple internships at <span className="text-cyan-400">ORANTS, Capgemini, Samsung Innovation Campus, and Varcons Technologies</span>,
-            I've gained hands-on experience in AI/ML, IoT, data science, and full-stack development.
+            I have gained hands-on experience in AI/ML, IoT, data science, and full-stack development.
           </p>
 
           <p className="text-lg text-gray-400 mb-12 leading-relaxed">
@@ -532,7 +600,6 @@ const Portfolio = () => {
             </a>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
             {achievements.map((achievement, idx) => (
               <div key={idx} className="bg-gradient-to-br from-purple-900/30 to-cyan-900/30 border border-purple-500/30 rounded-xl p-4 hover:border-purple-500/60 transition hover:transform hover:scale-110">
@@ -573,13 +640,6 @@ const Portfolio = () => {
         .animate-gradient {
           background-size: 200% 200%;
           animation: gradient 3s ease infinite;
-        }
-        .animate-spin-slow {
-          animation: spin 8s linear infinite;
-        }
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
       `}</style>
     </div>
