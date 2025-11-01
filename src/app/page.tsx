@@ -217,20 +217,48 @@ const Portfolio = () => {
       <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="relative z-10 text-center max-w-5xl">
           {/* Profile Photo */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full blur-2xl opacity-50 animate-pulse" />
-              <div className="relative w-40 h-40 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full p-1">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
-                  <img
-                    src="/assets/about-pic2.jpg"
-                    alt="Shivanna"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+<div className="mb-8 flex justify-center">
+  <div className="relative inline-block">
+    {/* Photo with Smooth Wave Bottom */}
+    <div className="relative z-10">
+      <svg className="w-56" viewBox="0 -10 224 280" style={{ display: 'block' }}>
+        <defs>
+          <clipPath id="wave-bottom">
+            <path d="M 0,0 L 350,0 L 245,300 Q 160,170 110,236 Q 137,210 105,241 Q 80,265 50,230 Q 20,180 0,210 Z" />
+          </clipPath>
+          
+
+          {/* Alternative: Multi-color gradient */}
+          <linearGradient id="rainbow-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="70%" stopColor="transparent" />
+            <stop offset="85%" stopColor="rgba(168, 85, 247, 0.4)" /> {/* purple */}
+            <stop offset="92%" stopColor="rgba(236, 72, 153, 0.4)" /> {/* pink */}
+            <stop offset="100%" stopColor="rgba(34, 211, 238, 0.5)" /> {/* cyan */}
+          </linearGradient>
+         
+        </defs>
+        <image 
+          href="/assets/about-pic2.png" 
+          width="230" 
+          height="280" 
+          clipPath="url(#wave-bottom)"
+          preserveAspectRatio="xMidYMin slice"
+        />
+        {/* Gradient overlay at bottom */}
+        <rect 
+          width="224" 
+          height="280" 
+          fill="url(#bottom-gradient)" 
+          clipPath="url(#wave-bottom)"
+        />
+      </svg>
+    </div>
+    
+    {/* Gradient Glow Behind Bottom Only */}
+    <div className="absolute bottom-0 left-0 right-0 h-70 bg-gradient-to-t from-purple-500 via-pink-500 to-transparent blur-2xl opacity-60 -z-10" />
+  </div>
+</div>
 
           <div className="mb-6 flex justify-center gap-3 flex-wrap">
             {achievements.slice(0, 3).map((achievement, idx) => (
@@ -248,7 +276,7 @@ const Portfolio = () => {
           <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
             <Terminal className="w-6 h-6 text-purple-400 animate-pulse" />
             <p className="text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
-              AI Engineer & Full-Stack Developer
+              AI Engineer & Software Developer
             </p>
             <Rocket className="w-6 h-6 text-cyan-400 animate-bounce" />
           </div>
@@ -562,9 +590,9 @@ const Portfolio = () => {
           </p>
 
           <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-            Currently pursuing my B.E. in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
+            I'm a recent graduate in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
             Through multiple internships at <span className="text-cyan-400">ORANTS AI, Capgemini, Samsung Innovation Campus, and Varcons Technologies</span>,
-            I have gained hands-on experience in AI/ML, IoT, data science, and full-stack development.
+            I have gained hands-on experience in AI/ML, data science, and full-stack development.
           </p>
 
           <p className="text-lg text-gray-400 mb-12 leading-relaxed">
@@ -614,7 +642,7 @@ const Portfolio = () => {
               Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span>
             </p>
             <p className="text-gray-500 text-sm">
-              © 2025 Shivanna. All rights reserved.
+              This portofolio website built as a part of Internship task @ ORANTS AI.
             </p>
           </div>
         </div>
