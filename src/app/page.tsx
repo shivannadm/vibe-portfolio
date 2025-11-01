@@ -22,23 +22,23 @@ const Portfolio = () => {
       title: "AI Stack Showdown",
       description: "Developed an intelligent comparison platform that evaluates and ranks different technology stacks using AI analysis, helping developers make data-driven decisions on framework selection.",
       tech: ["Next.js", "React", "AI Analysis", "Tailwind CSS", "API Integration"],
-      outcomes: ["Framework comparison engine", "Performance benchmarking", "Interactive visualization"],
+      outcomes: ["Framework comparison engine", "Performance benchmarking", "Prompt output"],
       gradient: "from-blue-600 via-cyan-600 to-teal-600",
       icon: "⚡",
       github: "https://github.com/shivannadm/ai-stack-showdown",
       live: "https://ai-stack-showdown.vercel.app/",
-      highlights: ["AI-powered analysis", "Real-time comparisons", "Developer insights"]
+      highlights: ["AI-powered analysis", "Real-time response", "Developer insights"]
     },
     {
       title: "AI Mood Journal",
       description: "Created an intelligent journaling application that uses AI to analyze emotional patterns, provide mood insights, and offer personalized recommendations for mental wellness.",
-      tech: ["Python", "NLP", "Sentiment Analysis", "Django", "AI APIs"],
+      tech: ["Python", "Sentiment analysis", "Expo Go", "Next.js", "AI APIs","React native","Firebase"],
       outcomes: ["Emotion tracking", "AI mood analysis", "Personalized insights"],
       gradient: "from-cyan-600 via-blue-600 to-purple-600",
       icon: "🧠",
       github: "https://github.com/shivannadm/ai-mood-journal",
       live: "https://expo.dev/accounts/shivanna/projects/ai-mood-journal/builds/526fce69-df06-4401-acba-ba814f1b3db3",
-      highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness"]
+      highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness"," AI recommendations","Track emotional trends"]
     },
     {
       title: "Viral Replicator",
@@ -66,23 +66,23 @@ const Portfolio = () => {
 
   const internships = [
     {
-      company: "ORANTS",
+      company: "ORANTS AI",
       role: "AI Engineer Intern",
-      period: "November 2024 - March 2025",
+      period: "October 2025 - Present",
       description: "Working on cutting-edge AI projects including influencer tracking, content generation, and intelligent application development.",
       icon: "🤖"
     },
     {
       company: "Capgemini, NASSCOM Foundation",
       role: "Data Science Intern",
-      period: "August 2023 - February 2024",
+      period: "September 2024 - March 2025",
       description: "Applied data visualization, machine learning, and AI techniques. Gained expertise in data preprocessing, model development, and deployment.",
       icon: "📊"
     },
     {
       company: "Samsung Innovation Campus",
       role: "IoT Intern",
-      period: "September 2024 - March 2025",
+      period: "August 2023 - February 2024",
       description: "Hands-on experience with IoT, focusing on Raspberry Pi and Python-based automation projects.",
       icon: "🔌"
     },
@@ -100,21 +100,21 @@ const Portfolio = () => {
       degree: "Bachelor of Engineering",
       field: "Information Science and Engineering",
       institution: "Cambridge Institute of Technology, Bengaluru",
-      board: "VTU",
+      board: "Visvesvaraya Technological University",
       period: "2021 - 2025",
       score: "CGPA: 8.8/10",
       icon: "🎓",
-      details: "Computer Networks, Operating Systems, DBMS, Data Structures, OOPs"
+      details: "Computer Networks, Operating Systems, DBMS, Data Structures, OOPs, Statistics, AI/ML"
     },
     {
       degree: "Pre-University",
       field: "Computer Science",
       institution: "MDR PU College of Science Deodurga, Raichur",
-      board: "KREIS",
+      board: "Karnataka Residential Educational Institutions Society",
       period: "2019 - 2021",
       score: "Percentage: 88.3%",
       icon: "📚",
-      details: ""
+      details: "Computer Science, Mathematics, Physics, Chemistry"
     },
     {
       degree: "SSLC",
@@ -124,17 +124,17 @@ const Portfolio = () => {
       period: "2018 - 2019",
       score: "Percentage: 88.88%",
       icon: "🏫",
-      details: ""
+      details: "Science, Mathematics, Social Studies, English"
     }
   ];
 
   const techStack = {
-    "Languages": ["Python", "Java", "C", "JavaScript"],
-    "AI/ML": ["TensorFlow", "LSTM", "CNN", "NLP", "Sentiment Analysis"],
+    "Languages": ["Java", "Python", "C", "JavaScript"],
+    "AI/ML": ["TensorFlow", "Langchain", "CNN", "Pandas", "Numpy", "Scikit-learn"],
     "Web Dev": ["Django", "Next.js", "React", "HTML", "CSS", "JavaScript"],
-    "Databases": ["MySQL", "MongoDB", "Firebase"],
-    "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse"],
-    "Skills": ["Data Science", "IoT", "OOPs", "DBMS", "Agile"]
+    "Databases": ["MySQL", "MongoDB", "Firebase","API Integration"],
+    "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse","n8n Engine"],
+    "Skills": ["Data Science", "AI Automation", "Data Structure", "OOPs", "DBMS", "Operating System"]
   };
 
   const achievements = [
@@ -563,7 +563,7 @@ const Portfolio = () => {
 
           <p className="text-lg text-gray-400 mb-8 leading-relaxed">
             Currently pursuing my B.E. in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
-            Through multiple internships at <span className="text-cyan-400">ORANTS, Capgemini, Samsung Innovation Campus, and Varcons Technologies</span>,
+            Through multiple internships at <span className="text-cyan-400">ORANTS AI, Capgemini, Samsung Innovation Campus, and Varcons Technologies</span>,
             I have gained hands-on experience in AI/ML, IoT, data science, and full-stack development.
           </p>
 
