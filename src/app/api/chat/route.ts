@@ -100,7 +100,7 @@ function getSimpleResponse(message: string): string {
 
     // Certifications
     if (message.includes('certificate') || message.includes('certification')) {
-        return "Shivanna holds certifications in:\n\n✅ Data Science & ML - FutureSkills Prime\n✅ Employability Skills - Wadhwani Foundation\n✅ RDBMS & MySQL - SpringBoard\n✅ Scrum Project Management - Atlassian";
+        return "Shivanna holds certifications in:\n\n✅ Data Science & ML\n✅ Employability Skills\n✅ RDBMS & MySQL\n✅ Scrum Project Management\n✅ Full-Stack Development\n✅ Python\n\nThese validate his skills and commitment to continuous learning!";
     }
 
     // Hire/Available

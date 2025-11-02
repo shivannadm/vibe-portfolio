@@ -722,135 +722,156 @@ const Portfolio = () => {
           </div>
 
           {/* Certifications */}
-          <div className="mt-16 bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
+          <div className="mt-16 bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 rounded-2xl p-8 max-w-6xl mx-auto">
             <h3 className="text-3xl font-bold mb-6 text-center text-cyan-400 flex items-center justify-center gap-2">
               <Award className="w-8 h-8" />
               Certifications
             </h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-6">
               {[
-                "Data Science & ML - FutureSkills Prime",
-                "Employability Skills - Wadhwani Foundation",
-                "RDBMS & MySQL - SpringBoard",
-                "Scrum Project Management - Atlassian"
+                { name: "Data Science & ML - NASSCOM FutureSkills Prime", pdf: "/assets/certificates/NASSCOM_Shivanna.pdf" },
+                { name: "Employability Skills - Wadhwani Foundation", pdf: "/assets/certificates/Wadhwani Foundation Certificate.pdf" },
+                { name: "Agile Project Management - Atlassian", pdf: "/assets/certificates/Agile Project Management.pdf" },
+                { name: "Database Management System - SpringBoard", pdf: "/assets/certificates/Infosysy-dbms-Sql.pdf" },
+                { name: "Python (Basic) - HackerRank", pdf: "/assets/certificates/HackerRank-Python.pdf" },
+                { name: "Young Python Professional - Infosys", pdf: "/assets/certificates/Infosysy-Python.pdf" },
+                { name: "Data Science with GenAI - Udemy", pdf: "/assets/certificates/Udemy-GenAI.pdf" },
+                { name: "AI Application Development - Udemy", pdf: "/assets/certificates/Udemy-Google-AI.pdf" },
+                { name: "Digital 101 Journey - FutureSkills Prime", pdf: "/assets/certificates/Digital-python.pdf" },
+                { name: "Skillsda Internship Certificate", pdf: "/assets/certificates/Skillsda-intern.pdf" },
+                { name: "Zidio Training Certificate", pdf: "/assets/certificates/Zidio Training.pdf" },
+                { name: "Zidio Internship Certificate", pdf: "/assets/certificates/Zidio-Intern.pdf" }
               ].map((cert, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-purple-900/20 rounded-lg p-3 border border-purple-500/20">
-                  <Award className="w-5 h-5 text-purple-400" />
-                  <span>{cert}</span>
+                <div key={idx} className="flex items-center justify-between gap-3 text-gray-300 bg-purple-900/20 rounded-lg p-3 border border-purple-500/20 hover:border-purple-500/60 transition group">
+                  <div className="flex items-center gap-3 flex-1">
+                    <Award className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    <span className="text-sm">{cert.name}</span>
+                  </div>
+                  <a
+                    href={cert.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-400 hover:text-cyan-300 transition transform hover:scale-110 flex-shrink-0"
+                    title="View Certificate"
+                  >
+                    <ExternalLink className="w-6 h-5" />
+                  </a>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* AI Chatbot */}
-      {showChatbot && (
-        <div className="fixed bottom-24 right-8 z-50 w-96 max-w-[calc(100vw-4rem)] animate-slideUp">
-          <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-purple-500/50 rounded-2xl shadow-2xl shadow-purple-500/50 overflow-hidden">
-            {/* Chat Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-cyan-600 p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <Bot className="w-6 h-6" />
+      {
+        showChatbot && (
+          <div className="fixed bottom-24 right-8 z-50 w-96 max-w-[calc(100vw-4rem)] animate-slideUp">
+            <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-purple-500/50 rounded-2xl shadow-2xl shadow-purple-500/50 overflow-hidden">
+              {/* Chat Header */}
+              <div className="bg-gradient-to-r from-purple-600 to-cyan-600 p-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Bot className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white">AI Assistant</h3>
+                    <p className="text-xs text-white/80">Ask me anything about Shivanna</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-white">AI Assistant</h3>
-                  <p className="text-xs text-white/80">Ask me anything about Shivanna</p>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowChatbot(false)}
-                className="text-white/80 hover:text-white transition hover:rotate-90 transform"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Chat Messages */}
-            <div className="h-96 overflow-y-auto p-4 space-y-3 bg-black/40">
-              {chatMessages.map((msg, idx) => (
-                <div
-                  key={idx}
-                  className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                <button
+                  onClick={() => setShowChatbot(false)}
+                  className="text-white/80 hover:text-white transition hover:rotate-90 transform"
                 >
-                  {msg.role === 'assistant' && (
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Chat Messages */}
+              <div className="h-96 overflow-y-auto p-4 space-y-3 bg-black/40">
+                {chatMessages.map((msg, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    {msg.role === 'assistant' && (
+                      <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot className="w-4 h-4" />
+                      </div>
+                    )}
+                    <div
+                      className={`max-w-[75%] rounded-2xl px-4 py-2 ${msg.role === 'user'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                        : 'bg-gray-800 text-gray-200 border border-purple-500/30'
+                        }`}
+                    >
+                      <p className="text-sm leading-relaxed">{msg.content}</p>
+                    </div>
+                    {msg.role === 'user' && (
+                      <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <User className="w-4 h-4" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="flex gap-2 justify-start">
+                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
                       <Bot className="w-4 h-4" />
                     </div>
-                  )}
-                  <div
-                    className={`max-w-[75%] rounded-2xl px-4 py-2 ${msg.role === 'user'
-                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-                      : 'bg-gray-800 text-gray-200 border border-purple-500/30'
-                      }`}
-                  >
-                    <p className="text-sm leading-relaxed">{msg.content}</p>
-                  </div>
-                  {msg.role === 'user' && (
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <User className="w-4 h-4" />
+                    <div className="bg-gray-800 rounded-2xl px-4 py-3 border border-purple-500/30">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
-              {isTyping && (
-                <div className="flex gap-2 justify-start">
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
-                    <Bot className="w-4 h-4" />
                   </div>
-                  <div className="bg-gray-800 rounded-2xl px-4 py-3 border border-purple-500/30">
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                    </div>
+                )}
+              </div>
+
+              {/* Quick Actions */}
+              {chatMessages.length === 1 && (
+                <div className="px-4 py-2 bg-black/20 border-t border-purple-500/20">
+                  <p className="text-xs text-gray-400 mb-2">Quick questions:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {quickActions.map((action, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleQuickAction(action)}
+                        className="text-xs bg-purple-900/30 hover:bg-purple-900/50 text-purple-300 px-3 py-1.5 rounded-full border border-purple-500/30 transition"
+                      >
+                        {action}
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
-            </div>
 
-            {/* Quick Actions */}
-            {chatMessages.length === 1 && (
-              <div className="px-4 py-2 bg-black/20 border-t border-purple-500/20">
-                <p className="text-xs text-gray-400 mb-2">Quick questions:</p>
-                <div className="flex flex-wrap gap-2">
-                  {quickActions.map((action, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleQuickAction(action)}
-                      className="text-xs bg-purple-900/30 hover:bg-purple-900/50 text-purple-300 px-3 py-1.5 rounded-full border border-purple-500/30 transition"
-                    >
-                      {action}
-                    </button>
-                  ))}
+              {/* Chat Input */}
+              <form onSubmit={handleChatSubmit} className="p-4 bg-black/40 border-t border-purple-500/30">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    placeholder="Ask me anything..."
+                    className="flex-1 bg-gray-900/50 border border-purple-500/30 rounded-full px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition"
+                    disabled={isTyping}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isTyping || !chatInput.trim()}
+                    className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg disabled:scale-100"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
                 </div>
-              </div>
-            )}
-
-            {/* Chat Input */}
-            <form onSubmit={handleChatSubmit} className="p-4 bg-black/40 border-t border-purple-500/30">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  placeholder="Ask me anything..."
-                  className="flex-1 bg-gray-900/50 border border-purple-500/30 rounded-full px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition"
-                  disabled={isTyping}
-                />
-                <button
-                  type="submit"
-                  disabled={isTyping || !chatInput.trim()}
-                  className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg disabled:scale-100"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       {/* Chatbot Toggle Button */}
       <button
@@ -1113,7 +1134,7 @@ const Portfolio = () => {
         }
         
       `}</style>
-    </div>
+    </div >
   );
 };
 
