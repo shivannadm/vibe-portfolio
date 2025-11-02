@@ -532,9 +532,9 @@ Built with:
 **🎉 Congratulations on deploying your portfolio!**
 
 Live portfolio URL:
-```
-https://vibe-portfolio-[your-username].vercel.app
-```
+
+[Shivanna Portfolio](https://shi-dm.vercel.app/)
+
 
 Share it with the world! 🚀✨
 
