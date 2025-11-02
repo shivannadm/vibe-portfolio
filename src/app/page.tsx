@@ -1,8 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { MessageCircle, Send, X, Minimize2, Bot, User } from 'lucide-react';
-import { Mail, Github, Linkedin, ExternalLink, Code2, Sparkles, ChevronDown, MapPin, Phone, Award, Briefcase, GraduationCap, Zap, Terminal, Rocket, Star, Download, Globe, Play } from 'lucide-react';
+import { Mail, Github, Linkedin, ExternalLink, Code2, Sparkles, ChevronDown, MapPin, Phone, Award, Briefcase, GraduationCap, Zap, Terminal, Rocket, Star, Download, Globe, Play, MessageCircle, Send, X, Minimize2, Bot, User, FileText } from 'lucide-react';
+
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -38,50 +38,77 @@ const Portfolio = () => {
   const [isTyping, setIsTyping] = useState(false);
 
   const projects = [
-
     {
       title: "AI Stack Showdown",
-      description: "Developed an intelligent comparison platform that evaluates and ranks different technology stacks using AI analysis, helping developers make data-driven decisions on framework selection.",
+      description: "Developed an intelligent GPT from the react native stack and ranks different technology stacks using AI analysis, helping developers make data-driven decisions on framework selection.",
       tech: ["Next.js", "React", "AI Analysis", "Tailwind CSS", "API Integration"],
       outcomes: ["Framework comparison engine", "Performance benchmarking", "Prompt output"],
       gradient: "from-blue-600 via-cyan-600 to-teal-600",
       icon: "⚡",
       github: "https://github.com/shivannadm/ai-stack-showdown",
       live: "https://ai-stack-showdown.vercel.app/",
+      report: "/assets/ai-stack-showdown.pdf",
       highlights: ["AI-powered analysis", "Real-time response", "Developer insights"]
     },
     {
       title: "AI Mood Journal",
       description: "Created an intelligent journaling application that uses AI to analyze emotional patterns, provide mood insights, and offer personalized recommendations for mental wellness.",
-      tech: ["Python", "Sentiment analysis", "Expo Go", "Next.js", "AI APIs", "React native", "Firebase"],
+      tech: ["Python", "Expo Go", "Next.js", "AI APIs", "React native", "Firebase"],
       outcomes: ["Emotion tracking", "AI mood analysis", "Personalized insights"],
       gradient: "from-cyan-600 via-blue-600 to-purple-600",
       icon: "🧠",
       github: "https://github.com/shivannadm/ai-mood-journal",
       live: "https://expo.dev/accounts/shivanna/projects/ai-mood-journal/builds/526fce69-df06-4401-acba-ba814f1b3db3",
+      report: "/assets/ai-mood-journal.pdf",
       highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness", " AI recommendations", "Track emotional trends"]
     },
     {
       title: "Viral Replicator",
       description: "Built an AI content generation platform that analyzes viral content patterns and helps creators replicate successful content strategies using machine learning algorithms.",
-      tech: ["AI/ML", "Content Analysis", "Python", "Pattern Recognition", "APIs"],
+      tech: ["AI/ML", "Content Analysis", "Python", "Pattern Recognition", "APIs", "Next.js", "React", " Tailwind CSS"],
       outcomes: ["Viral pattern detection", "Content optimization", "Trend prediction"],
       gradient: "from-teal-600 via-green-600 to-emerald-600",
       icon: "🚀",
       github: "https://github.com/shivannadm/viral-replicator",
       live: "https://viral-replicator.vercel.app/",
+      report: "/assets/viral-replicator.pdf",
       highlights: ["ML-powered insights", "Trend analysis", "Content strategy"]
     },
     {
       title: "AI Influencer Tracker",
-      description: "Built a comprehensive AI-powered system to track and analyze social media influencers, monitoring engagement metrics, content patterns, and audience demographics across multiple platforms.",
-      tech: ["Python", "AI APIs", "Web Scraping", "Data Analysis", "MongoDB"],
-      outcomes: ["Automated influencer discovery", "Real-time engagement analytics", "Sentiment analysis dashboard"],
+      description: "Built a comprehensive AI-powered automated n8n workflow to track and analyze social media influencers, monitoring engagement metrics, content patterns, and audience demographics across multiple platforms.",
+      tech: ["API Nodes", "Web Scraping", "Data Analysis", "Google sheets", "n8n Engine"],
+      outcomes: ["Automated influencer discovery", "Real-time engagement analytics", "Engagment rate analysis"],
       gradient: "from-purple-600 via-pink-600 to-red-600",
       icon: "👥",
       github: "https://github.com/shivannadm/AI_Influencer_Tracker",
       live: "https://github.com/shivannadm/AI_Influencer_Tracker/tree/main/n8n_workflow",
-      highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data"]
+      report: "/assets/ai-influencer-tracker.pdf",
+      highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data", "AI Automation"]
+    },
+    {
+      title: "AI Forecast for Investor Decision",
+      description: "Developed an AI-driven stock price prediction model using LSTM for long-term trend forecasting and CNN for short-term pattern recognition. Implemented a Django-based web application to deliver real-time stock trend predictions.",
+      tech: ["Python", "Django", "LSTM", "CNN", "Machine Learning", "MySQL"],
+      outcomes: ["Long-term trend forecasting", "Short-term pattern recognition", "Real-time predictions"],
+      gradient: "from-green-600 via-emerald-600 to-teal-600",
+      icon: "📈",
+      github: "https://github.com/shivannadm/AI_Stocker",
+      live: null,
+      report: "/assets/ai-forecast-investor.pdf",
+      highlights: ["LSTM forecasting", "CNN pattern detection", "Django web app"]
+    },
+    {
+      title: "E-Commerce Website",
+      description: "Developed a full-stack e-commerce web application using Django's MVT architecture. Utilized MySQL for database management and enhanced UI/UX using HTML, CSS, and JavaScript with GitHub for version control.",
+      tech: ["Django", "MySQL", "HTML", "CSS", "JavaScript", "GitHub"],
+      outcomes: ["Structured MVT architecture", "Database management", "Enhanced UI/UX"],
+      gradient: "from-orange-600 via-red-600 to-pink-600",
+      icon: "🛒",
+      github: "https://github.com/shivannadm/Ecommerce-web",
+      live: null,
+      report: "/assets/ecommerce-website.pdf",
+      highlights: ["Full-stack development", "MySQL database", "Responsive design"]
     }
   ];
 
@@ -91,28 +118,32 @@ const Portfolio = () => {
       role: "AI Engineer Intern",
       period: "October 2025 - Present",
       description: "Working on cutting-edge AI projects including influencer tracking, content generation, and intelligent application development.",
-      icon: "🤖"
+      icon: "🤖",
+      highlights: ["AI Development", "Content Generation", "AI Automation", "Data Science", "Vibe coding", "n8n Engine", "Prompt Engineering", "Problem Solving"]
     },
     {
       company: "Capgemini, NASSCOM Foundation",
       role: "Data Science Intern",
       period: "September 2024 - March 2025",
       description: "Applied data visualization, machine learning, and AI techniques. Gained expertise in data preprocessing, model development, and deployment.",
-      icon: "📊"
+      icon: "📊",
+      highlights: ["Machine Learning", , "Data Science", "Problem Solving", "Model Deployment", "Data Preprocessing", "Communication"]
     },
     {
       company: "Samsung Innovation Campus",
       role: "IoT Intern",
       period: "August 2023 - February 2024",
       description: "Hands-on experience with IoT, focusing on Raspberry Pi and Python-based automation projects.",
-      icon: "🔌"
+      icon: "🔌",
+      highlights: ["IoT Development", "Raspberry Pi", "Python Automation", "Hardware Integration", "Operating Systems"]
     },
     {
       company: "Varcons Technologies",
       role: "Full-Stack Development Intern",
       period: "October 2022 - November 2022",
       description: "Developed responsive web applications using HTML, CSS, JavaScript, and MongoDB. Gained practical frontend and backend experience.",
-      icon: "💻"
+      icon: "💻",
+      highlights: ["Full-Stack Development", "Web Applications", "MongoDB", "Figma", "Responsive Design"]
     }
   ];
 
@@ -540,14 +571,25 @@ const Portfolio = () => {
                       <Github className="w-3 h-3" />
                       GitHub
                     </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-4 py-2 rounded-full text-xs font-semibold transition transform hover:scale-105 shadow-lg"
+                      >
+                        <Play className="w-3 h-3" />
+                        Live Demo
+                      </a>
+                    )}
                     <a
-                      href={project.live}
+                      href={project.report}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-4 py-2 rounded-full text-xs font-semibold transition transform hover:scale-105 shadow-lg"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 px-4 py-2 rounded-full text-xs font-semibold transition transform hover:scale-105 shadow-lg"
                     >
-                      <Play className="w-3 h-3" />
-                      Live Demo
+                      <FileText className="w-3 h-3" />
+                      Report PDF
                     </a>
                   </div>
                 </div>
@@ -582,7 +624,25 @@ const Portfolio = () => {
                     <h3 className="text-xl font-bold text-cyan-300 mb-1">{internship.company}</h3>
                     <p className="text-purple-400 font-semibold mb-2">{internship.role}</p>
                     <p className="text-gray-500 text-sm mb-3">{internship.period}</p>
-                    <p className="text-gray-300 text-sm leading-relaxed">{internship.description}</p>
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4">{internship.description}</p>
+
+                    {/* NEW: Featured Areas/Highlights */}
+                    <div>
+                      <p className="text-xs text-cyan-400 font-semibold mb-2 flex items-center gap-2">
+                        <Zap className="w-3 h-3" />
+                        Key Focus Areas:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {internship.highlights.map((highlight, i) => (
+                          <span
+                            key={i}
+                            className="bg-cyan-900/30 text-cyan-300 px-2 py-1 rounded-full text-xs border border-cyan-500/30"
+                          >
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -721,8 +781,8 @@ const Portfolio = () => {
                   )}
                   <div
                     className={`max-w-[75%] rounded-2xl px-4 py-2 ${msg.role === 'user'
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-                        : 'bg-gray-800 text-gray-200 border border-purple-500/30'
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                      : 'bg-gray-800 text-gray-200 border border-purple-500/30'
                       }`}
                   >
                     <p className="text-sm leading-relaxed">{msg.content}</p>
@@ -944,7 +1004,7 @@ const Portfolio = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition"
-                      placeholder="Inquiry"
+                      placeholder="Enquiry"
                     />
                   </div>
 
@@ -961,7 +1021,7 @@ const Portfolio = () => {
                       required
                       rows={3}
                       className="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition resize-none"
-                      placeholder="Kindly mention your EMAIL here too. Feel free to reach out should you require any further information or clarification..."
+                      placeholder="Feel free to reach out should you require any further information or clarification..."
                     />
                   </div>
 
