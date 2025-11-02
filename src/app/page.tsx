@@ -47,7 +47,7 @@ const Portfolio = () => {
       icon: "⚡",
       github: "https://github.com/shivannadm/ai-stack-showdown",
       live: "https://ai-stack-showdown.vercel.app/",
-      report: "/assets/ai-stack-showdown.pdf",
+      report: "/assets/reports/ai-stack-showdown.pdf",
       highlights: ["AI-powered analysis", "Real-time response", "Developer insights"]
     },
     {
@@ -59,7 +59,7 @@ const Portfolio = () => {
       icon: "🧠",
       github: "https://github.com/shivannadm/ai-mood-journal",
       live: "https://expo.dev/accounts/shivanna/projects/ai-mood-journal/builds/526fce69-df06-4401-acba-ba814f1b3db3",
-      report: "/assets/ai-mood-journal.pdf",
+      report: "/assets/reports/ai-mood-journal.pdf",
       highlights: ["Sentiment analysis", "Pattern recognition", "Mental wellness", " AI recommendations", "Track emotional trends"]
     },
     {
@@ -71,7 +71,7 @@ const Portfolio = () => {
       icon: "🚀",
       github: "https://github.com/shivannadm/viral-replicator",
       live: "https://viral-replicator.vercel.app/",
-      report: "/assets/viral-replicator.pdf",
+      report: "/assets/reports/viral-replicator.pdf",
       highlights: ["ML-powered insights", "Trend analysis", "Content strategy"]
     },
     {
@@ -83,7 +83,7 @@ const Portfolio = () => {
       icon: "👥",
       github: "https://github.com/shivannadm/AI_Influencer_Tracker",
       live: "https://github.com/shivannadm/AI_Influencer_Tracker/tree/main/n8n_workflow",
-      report: "/assets/ai-influencer-tracker.pdf",
+      report: "/assets/reports/ai-influencer-tracker.pdf",
       highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data", "AI Automation"]
     },
     {
@@ -95,7 +95,7 @@ const Portfolio = () => {
       icon: "📈",
       github: "https://github.com/shivannadm/AI_Stocker",
       live: null,
-      report: "/assets/ai-forecast-investor.pdf",
+      report: "/assets/reports/ai-forecast-investor.pdf",
       highlights: ["LSTM forecasting", "CNN pattern detection", "Django web app"]
     },
     {
@@ -107,7 +107,7 @@ const Portfolio = () => {
       icon: "🛒",
       github: "https://github.com/shivannadm/Ecommerce-web",
       live: null,
-      report: "/assets/ecommerce-website.pdf",
+      report: "assets/reports/e-commerce.pdf",
       highlights: ["Full-stack development", "MySQL database", "Responsive design"]
     }
   ];
