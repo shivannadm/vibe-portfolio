@@ -1,5 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import { MessageCircle, Send, X, Minimize2, Bot, User } from 'lucide-react';
 import { Mail, Github, Linkedin, ExternalLink, Code2, Sparkles, ChevronDown, MapPin, Phone, Award, Briefcase, GraduationCap, Zap, Terminal, Rocket, Star, Download, Globe, Play } from 'lucide-react';
 
 const Portfolio = () => {
@@ -24,6 +26,16 @@ const Portfolio = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [showChatbot, setShowChatbot] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    {
+      role: 'assistant',
+      content: "Hi! 👋 I'm Shivanna's AI assistant. I can tell you about his skills, projects, experience, and more. What would you like to know?"
+    }
+  ]);
+  const [chatInput, setChatInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   const projects = [
 
@@ -158,28 +170,32 @@ const Portfolio = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      // Replace these with your EmailJS credentials
+      const result = await emailjs.send(
+        'service_csbms5t',        // Get from EmailJS dashboard
+        'template_302jxpf',       // Get from EmailJS dashboard
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'shivannadm16@gmail.com'
+        },
+        'nK5vv6DjpyrTqMqWn'         // Get from EmailJS dashboard
+      );
 
-      if (response.ok) {
-        alert('Message sent successfully!');
-        setShowContactForm(false);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        alert('Failed to send message. Please try again.');
-      }
+      console.log('SUCCESS!', result.text);
+      alert('Message sent successfully! I will get back to you soon.');
+      setShowContactForm(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
+      console.error('FAILED...', error);
+      alert('Failed to send message. Please try again or email me directly at shivannadm16@gmail.com');
     } finally {
       setIsSubmitting(false);
     }
@@ -187,6 +203,55 @@ const Portfolio = () => {
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleChatSubmit = async (e) => {
+    e.preventDefault();
+    if (!chatInput.trim()) return;
+
+    const userMessage = chatInput.trim();
+    setChatInput('');
+
+    // Add user message
+    setChatMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsTyping(true);
+
+    try {
+      // Send to your AI API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+      });
+
+      const data = await response.json();
+
+      // Add AI response
+      setChatMessages(prev => [...prev, {
+        role: 'assistant',
+        content: data.response || "I'm having trouble connecting right now. Please try again or contact Shivanna directly at shivannadm16@gmail.com"
+      }]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      setChatMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "Sorry, I'm experiencing technical difficulties. Please email Shivanna at shivannadm16@gmail.com"
+      }]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  // Quick action suggestions
+  const quickActions = [
+    "Tell me about your projects",
+    "What are your skills?",
+    "Your experience?",
+    "How to contact you?"
+  ];
+
+  const handleQuickAction = (action) => {
+    setChatInput(action);
   };
 
   return (
@@ -619,6 +684,128 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* AI Chatbot */}
+      {showChatbot && (
+        <div className="fixed bottom-24 right-8 z-50 w-96 max-w-[calc(100vw-4rem)] animate-slideUp">
+          <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-purple-500/50 rounded-2xl shadow-2xl shadow-purple-500/50 overflow-hidden">
+            {/* Chat Header */}
+            <div className="bg-gradient-to-r from-purple-600 to-cyan-600 p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                  <Bot className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-white">AI Assistant</h3>
+                  <p className="text-xs text-white/80">Ask me anything about Shivanna</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowChatbot(false)}
+                className="text-white/80 hover:text-white transition hover:rotate-90 transform"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Chat Messages */}
+            <div className="h-96 overflow-y-auto p-4 space-y-3 bg-black/40">
+              {chatMessages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  {msg.role === 'assistant' && (
+                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Bot className="w-4 h-4" />
+                    </div>
+                  )}
+                  <div
+                    className={`max-w-[75%] rounded-2xl px-4 py-2 ${msg.role === 'user'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                        : 'bg-gray-800 text-gray-200 border border-purple-500/30'
+                      }`}
+                  >
+                    <p className="text-sm leading-relaxed">{msg.content}</p>
+                  </div>
+                  {msg.role === 'user' && (
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-4 h-4" />
+                    </div>
+                  )}
+                </div>
+              ))}
+              {isTyping && (
+                <div className="flex gap-2 justify-start">
+                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                    <Bot className="w-4 h-4" />
+                  </div>
+                  <div className="bg-gray-800 rounded-2xl px-4 py-3 border border-purple-500/30">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Quick Actions */}
+            {chatMessages.length === 1 && (
+              <div className="px-4 py-2 bg-black/20 border-t border-purple-500/20">
+                <p className="text-xs text-gray-400 mb-2">Quick questions:</p>
+                <div className="flex flex-wrap gap-2">
+                  {quickActions.map((action, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleQuickAction(action)}
+                      className="text-xs bg-purple-900/30 hover:bg-purple-900/50 text-purple-300 px-3 py-1.5 rounded-full border border-purple-500/30 transition"
+                    >
+                      {action}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Chat Input */}
+            <form onSubmit={handleChatSubmit} className="p-4 bg-black/40 border-t border-purple-500/30">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  placeholder="Ask me anything..."
+                  className="flex-1 bg-gray-900/50 border border-purple-500/30 rounded-full px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition"
+                  disabled={isTyping}
+                />
+                <button
+                  type="submit"
+                  disabled={isTyping || !chatInput.trim()}
+                  className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg disabled:scale-100"
+                >
+                  <Send className="w-4 h-4" />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Chatbot Toggle Button */}
+      <button
+        onClick={() => setShowChatbot(!showChatbot)}
+        className="fixed bottom-8 right-24 z-50 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50 transition transform hover:scale-110 group"
+        title="AI Assistant"
+      >
+        {showChatbot ? (
+          <Minimize2 className="w-6 h-6 group-hover:rotate-180 transition-transform" />
+        ) : (
+          <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
+        )}
+        <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-black animate-pulse" />
+      </button>
+
       {/* About Section */}
       <section id="about" className="relative min-h-screen py-20 px-6 flex items-center bg-gradient-to-b from-purple-900/10 to-black">
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -774,7 +961,7 @@ const Portfolio = () => {
                       required
                       rows={3}
                       className="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition resize-none"
-                      placeholder="Feel free to reach out should you require any further information or clarification..."
+                      placeholder="Kindly mention your EMAIL here too. Feel free to reach out should you require any further information or clarification..."
                     />
                   </div>
 
@@ -805,7 +992,7 @@ const Portfolio = () => {
           )}
           <div className="border-t border-purple-500/30 pt-8 mt-12">
             <p className="text-gray-400 mb-2">
-              Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span>
+              Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span> | Portfolio will be updated each month.
             </p>
             <p className="text-gray-500 text-sm">
               This portfolio website built as a part of Internship task @ <a

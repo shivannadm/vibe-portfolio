@@ -1,5 +1,3 @@
-// Create this file at: app/api/send-email/route.ts
-
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -14,30 +12,25 @@ export async function POST(request: Request) {
             );
         }
 
-        // Using FormSubmit.co - A free service that sends form data to your email
-        // No API key needed, just works out of the box
-        const response = await fetch('https://formsubmit.co/ajax/shivannadm16@gmail.com', {
+        // Using FormSubmit.co with proper configuration
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', subject);
+        formData.append('message', message);
+        formData.append('_captcha', 'false');
+        formData.append('_template', 'table');
+
+        const response = await fetch('https://formsubmit.co/shivannadm16@gmail.com', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                subject: subject,
-                message: message,
-                _captcha: 'false', // Disable captcha
-                _template: 'table', // Use table format for email
-            })
+            body: formData
         });
 
         if (!response.ok) {
             throw new Error('Failed to send email');
         }
 
-        const data = await response.json();
-        return NextResponse.json({ success: true, data });
+        return NextResponse.json({ success: true });
 
     } catch (error) {
         console.error('Email error:', error);
