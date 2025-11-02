@@ -776,7 +776,7 @@ const Portfolio = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-white">AI Assistant</h3>
-                    <p className="text-xs text-white/80">Ask me anything about Shivanna</p>
+                    <p className="text-xs text-white/80">Ask me anything about my chief</p>
                   </div>
                 </div>
                 <button
