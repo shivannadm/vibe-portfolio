@@ -11,7 +11,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: any) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
@@ -197,11 +197,11 @@ const Portfolio = () => {
     { text: "Multiple AI Projects", icon: "🚀" }
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -232,11 +232,11 @@ const Portfolio = () => {
     }
   };
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: any) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleChatSubmit = async (e) => {
+  const handleChatSubmit = async (e: any) => {
     e.preventDefault();
     if (!chatInput.trim()) return;
 
@@ -281,7 +281,7 @@ const Portfolio = () => {
     "How to contact you?"
   ];
 
-  const handleQuickAction = (action) => {
+  const handleQuickAction = (action: any) => {
     setChatInput(action);
   };
 
@@ -497,7 +497,7 @@ const Portfolio = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, idx) => (
+            {projects.map((project: any, idx: any) => (
               <div
                 key={idx}
                 onMouseEnter={() => setActiveProject(idx)}
@@ -523,7 +523,7 @@ const Portfolio = () => {
 
                   <div className="mb-3">
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {project.highlights.map((highlight, i) => (
+                      {project.highlights.map((highlight: any, i: any) => (
                         <span key={i} className="bg-cyan-900/30 text-cyan-300 px-2 py-1 rounded-full text-xs border border-cyan-500/30 flex items-center gap-1">
                           <Zap className="w-3 h-3" />
                           {highlight}
@@ -538,7 +538,7 @@ const Portfolio = () => {
                       Technologies:
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
+                      {project.tech.map((tech: any, i: any) => (
                         <span key={i} className="bg-purple-900/40 text-purple-200 px-3 py-1 rounded-lg text-xs border border-purple-500/30 hover:border-purple-500/60 transition">
                           {tech}
                         </span>
@@ -552,7 +552,7 @@ const Portfolio = () => {
                       Key Outcomes:
                     </p>
                     <ul className="space-y-1">
-                      {project.outcomes.map((outcome, i) => (
+                      {project.outcomes.map((outcome: any, i: any) => (
                         <li key={i} className="flex items-center gap-2 text-gray-400 text-xs">
                           <span className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full" />
                           {outcome}
