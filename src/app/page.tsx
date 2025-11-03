@@ -1073,7 +1073,13 @@ const Portfolio = () => {
           )}
           <div className="border-t border-purple-500/30 pt-8 mt-12">
             <p className="text-gray-400 mb-2">
-              Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span> | Portfolio will be updated each month.
+              Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span> | <a href="/assets/portfolio-report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
+              >
+                Portfolio Analysed Report
+              </a>.
             </p>
             <p className="text-gray-500 text-sm">
               This portfolio website built as a part of Internship task @ <a
