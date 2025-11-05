@@ -327,7 +327,7 @@ const Portfolio = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className="hover:text-purple-400 transition capitalize relative group"
+                className="hover:text-purple-400 transition capitalize relative group cursor-pointer"
               >
                 {section}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all" />
@@ -438,7 +438,7 @@ const Portfolio = () => {
           <div className="flex gap-4 justify-center mb-12 flex-wrap">
             <button
               onClick={() => setShowContactForm(true)}
-              className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110 shadow-lg shadow-purple-500/50"
+              className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110 shadow-lg shadow-purple-500/50 cursor-pointer"
             >
               <Mail className="w-5 h-5 group-hover:rotate-12 transition" />
               <span className="font-semibold">Get In Touch</span>
@@ -781,7 +781,7 @@ const Portfolio = () => {
                 </div>
                 <button
                   onClick={() => setShowChatbot(false)}
-                  className="text-white/80 hover:text-white transition hover:rotate-90 transform"
+                  className="text-white/80 hover:text-white transition hover:rotate-90 transform cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -839,7 +839,7 @@ const Portfolio = () => {
                       <button
                         key={idx}
                         onClick={() => handleQuickAction(action)}
-                        className="text-xs bg-purple-900/30 hover:bg-purple-900/50 text-purple-300 px-3 py-1.5 rounded-full border border-purple-500/30 transition"
+                        className="text-xs bg-purple-900/30 hover:bg-purple-900/50 text-purple-300 px-3 py-1.5 rounded-full border border-purple-500/30 transition cursor-pointer"
                       >
                         {action}
                       </button>
@@ -862,7 +862,7 @@ const Portfolio = () => {
                   <button
                     type="submit"
                     disabled={isTyping || !chatInput.trim()}
-                    className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg disabled:scale-100"
+                    className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg disabled:scale-100 cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
                   </button>
@@ -876,7 +876,7 @@ const Portfolio = () => {
       {/* Chatbot Toggle Button */}
       <button
         onClick={() => setShowChatbot(!showChatbot)}
-        className="fixed bottom-8 right-24 z-50 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50 transition transform hover:scale-110 group"
+        className="fixed bottom-8 right-24 z-50 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50 transition transform hover:scale-110 group cursor-pointer"
         title="AI Assistant"
       >
         {showChatbot ? (
@@ -916,7 +916,7 @@ const Portfolio = () => {
           <div className="flex gap-6 justify-center mb-12 flex-wrap">
             <button
               onClick={() => setShowContactForm(true)}
-              className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full transition transform hover:scale-110 shadow-lg shadow-purple-500/50"
+              className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full transition transform hover:scale-110 shadow-lg shadow-purple-500/50 cursor-pointer"
             >
               <Mail className="w-5 h-5" />
               <span className="font-semibold">Get In Touch</span>
@@ -956,7 +956,7 @@ const Portfolio = () => {
                 {/* Close Button */}
                 <button
                   onClick={() => setShowContactForm(false)}
-                  className="absolute top-3 right-3 text-gray-400 hover:text-white transition transform hover:scale-110 hover:rotate-90"
+                  className="absolute top-3 right-3 text-gray-400 hover:text-white transition transform hover:scale-110 hover:rotate-90 cursor-pointer"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1050,7 +1050,7 @@ const Portfolio = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-700 px-6 py-2.5 rounded-full font-semibold text-sm transition transform hover:scale-105 shadow-lg shadow-purple-500/50 flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-700 px-6 py-2.5 rounded-full font-semibold text-sm transition transform hover:scale-105 shadow-lg shadow-purple-500/50 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
