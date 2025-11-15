@@ -358,11 +358,11 @@ const Portfolio = () => {
       <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="relative z-10 text-center max-w-5xl">
           {/* Profile Photo */}
-          <div className="mb-8 flex justify-center">
+          <div className="mb-4 flex justify-center">
             <div className="relative inline-block">
               {/* Photo with Smooth Wave Bottom */}
               <div className="relative z-10">
-                <svg className="w-56" viewBox="0 -10 224 280" style={{ display: 'block' }}>
+                <svg className="w-45 animate-pulse" viewBox="0 -10 264 290" style={{ display: 'block' }}>
                   <defs>
                     <clipPath id="wave-bottom">
                       <path d="M 0,0 L 350,0 L 245,300 Q 160,170 110,236 Q 137,210 105,241 Q 80,265 50,230 Q 20,180 0,210 Z" />
@@ -370,17 +370,17 @@ const Portfolio = () => {
 
 
                     {/* Alternative: Multi-color gradient */}
-                    <linearGradient id="rainbow-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="rainbow-gradient" x1="10%" y1="10%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="transparent" />
                       <stop offset="70%" stopColor="transparent" />
-                      <stop offset="85%" stopColor="rgba(168, 85, 247, 0.4)" /> {/* purple */}
-                      <stop offset="92%" stopColor="rgba(236, 72, 153, 0.4)" /> {/* pink */}
-                      <stop offset="100%" stopColor="rgba(34, 211, 238, 0.5)" /> {/* cyan */}
+                      <stop offset="85%" stopColor="rgba(120, 27, 207, 0.4)" /> {/* purple */}
+                      <stop offset="92%" stopColor="rgba(247, 66, 157, 0.4)" /> {/* pink */}
+                      <stop offset="100%" stopColor="rgba(57, 229, 255, 0.5)" /> {/* cyan */}
                     </linearGradient>
 
                   </defs>
                   <image
-                    href="/assets/about-pic2.png"
+                    href="/assets/xP.png"
                     width="230"
                     height="280"
                     clipPath="url(#wave-bottom)"
@@ -397,11 +397,11 @@ const Portfolio = () => {
               </div>
 
               {/* Gradient Glow Behind Bottom Only */}
-              <div className="absolute bottom-0 left-0 right-0 h-70 bg-gradient-to-t from-purple-500 via-pink-500 to-transparent blur-2xl opacity-60 -z-10" />
+              <div className="absolute bottom-0 left-10 right-10 h-50 bg-gradient-to-t from-purple-500 via-red-500 to-transparent blur-3xl opacity-50 -z-100" />
             </div>
           </div>
 
-          <div className="mb-6 flex justify-center gap-3 flex-wrap">
+          <div className="mb-4 flex justify-center gap-3 flex-wrap">
             {achievements.slice(0, 3).map((achievement, idx) => (
               <div key={idx} className="bg-purple-900/30 border border-purple-500/30 rounded-full px-4 py-2 text-sm backdrop-blur-sm flex items-center gap-2">
                 <span>{achievement.icon}</span>
@@ -410,19 +410,19 @@ const Portfolio = () => {
             ))}
           </div>
 
-          <h1 className="text-7xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
+          <h1 className="text-6xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
             SHIVANNA
           </h1>
 
-          <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
+          <div className="flex items-center justify-center gap-3 mb-5 flex-wrap">
             <Terminal className="w-6 h-6 text-purple-400 animate-pulse" />
-            <p className="text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
+            <p className="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
               AI Engineer & Software Developer
             </p>
             <Rocket className="w-6 h-6 text-cyan-400 animate-bounce" />
           </div>
 
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed">
             Crafting intelligent solutions at the intersection of <span className="text-purple-400 font-semibold">AI</span> and modern <span className="text-cyan-400 font-semibold">web development</span>.
             Building the future, one line of code at a time.
           </p>
@@ -435,13 +435,13 @@ const Portfolio = () => {
             <span>+91 8197753351</span>
           </div>
 
-          <div className="flex gap-4 justify-center mb-12 flex-wrap">
+          <div className="flex gap-4 justify-center mb-10 flex-wrap">
             <button
               onClick={() => setShowContactForm(true)}
               className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full flex items-center gap-2 transition transform hover:scale-110 shadow-lg shadow-purple-500/50 cursor-pointer"
             >
-              <Mail className="w-5 h-5 group-hover:rotate-12 transition" />
-              <span className="font-semibold">Get In Touch</span>
+              <Mail className="w-5 h-5 group-hover:rotate-12 transition animate-pulse" />
+              <span className="font-semibold animate-pulse">Get In Touch</span>
             </button>
             <a
               href="https://github.com/shivannadm"
@@ -1079,16 +1079,6 @@ const Portfolio = () => {
                 className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
               >
                 Portfolio Analysed Report
-              </a>.
-            </p>
-            <p className="text-gray-500 text-sm">
-              This portfolio website built as a part of Internship task @ <a
-                href="https://orants.ai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
-              >
-                ORANTS.AI
               </a>.
             </p>
           </div>
