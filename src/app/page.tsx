@@ -1110,7 +1110,7 @@ const Portfolio = () => {
           }
         }
         .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
+          animation: fadeIn 0.4s ease-out;
         }
         .animate-slideUp {
           animation: slideUp 0.4s ease-out;
