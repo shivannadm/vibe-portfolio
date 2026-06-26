@@ -127,7 +127,7 @@ const Portfolio = () => {
       period: "September 2024 - March 2025",
       description: "Applied data visualization, machine learning, and AI techniques. Gained expertise in data preprocessing, model development, and deployment.",
       icon: "📊",
-      highlights: ["Machine Learning", , "Data Science", "Problem Solving", "Model Deployment", "Data Preprocessing", "Communication"]
+      highlights: ["Machine Learning", "Deep Learning", "Data Science", "Problem Solving", "Model Deployment", "Data Preprocessing", "Communication"]
     },
     {
       company: "Samsung Innovation Campus",
