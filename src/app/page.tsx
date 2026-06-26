@@ -39,6 +39,18 @@ const Portfolio = () => {
 
   const projects = [
     {
+      title: "Vaidehi - Advance Journaling",
+      description: "An entrepreneur-level productivity management system designed to help individuals organize their daily tasks, routines, health tracking, and trading activities. It provides a comprehensive suite of tools for personal development, time management, and goal achievement.",
+      tech: ["Next.js 14+", "React 18+", "TypeScript", "Tailwind CSS", "Oracle SQL"],
+      outcomes: ["Trend analysis for Trading, Routine, Task Management", "Habit tracking", "Health tracking", "Stock Market(Trading) insights"],
+      gradient: "from-purple-600 via-pink-600 to-red-600",
+      icon: "📑",
+      github: "https://github.com/shivannadm/vaidehi",
+      live: "https://vaidehi-scope.vercel.app/",
+      report: null,
+      highlights: ["Rise ticketing", "Admin workflow", "Advanced insights", "User-friendly interface"]
+    },
+    {
       title: "AI Stack Showdown",
       description: "Developed an intelligent GPT from the react native stack and ranks different technology stacks using AI analysis, helping developers make data-driven decisions on framework selection.",
       tech: ["Next.js", "React", "AI Analysis", "Tailwind CSS", "API Integration"],
@@ -75,18 +87,6 @@ const Portfolio = () => {
       highlights: ["ML-powered insights", "Trend analysis", "Content strategy"]
     },
     {
-      title: "AI Influencer Tracker",
-      description: "Built a comprehensive AI-powered automated n8n workflow to track and analyze social media influencers, monitoring engagement metrics, content patterns, and audience demographics across multiple platforms.",
-      tech: ["API Nodes", "Web Scraping", "Data Analysis", "Google sheets", "n8n Engine"],
-      outcomes: ["Automated influencer discovery", "Real-time engagement analytics", "Engagment rate analysis"],
-      gradient: "from-purple-600 via-pink-600 to-red-600",
-      icon: "👥",
-      github: "https://github.com/shivannadm/AI_Influencer_Tracker",
-      live: "https://github.com/shivannadm/AI_Influencer_Tracker/tree/main/n8n_workflow",
-      report: "/assets/reports/ai-influencer-tracker.pdf",
-      highlights: ["Multi-platform tracking", "AI-driven insights", "Real-time data", "AI Automation"]
-    },
-    {
       title: "AI Forecast for Investor Decision",
       description: "Developed an AI-driven stock price prediction model using LSTM for long-term trend forecasting and CNN for short-term pattern recognition. Implemented a Django-based web application to deliver real-time stock trend predictions.",
       tech: ["Python", "Django", "LSTM", "CNN", "Machine Learning", "MySQL"],
@@ -113,6 +113,14 @@ const Portfolio = () => {
   ];
 
   const internships = [
+    {
+      company: "TCS - Tata Consultancy Services",
+      role: "Software Engineer",
+      period: "April 2026 - Present",
+      description: "Working on cloud-based solutions and full-stack development.",
+      icon: "👨🏻‍💻",
+      highlights: ["Full-stack Development", "Cloud Computing", "Problem Solving"]
+    },
     {
       company: "ORANTS AI",
       role: "AI Engineer Intern",
@@ -181,12 +189,12 @@ const Portfolio = () => {
   ];
 
   const techStack = {
-    "Languages": ["Java", "Python", "C", "JavaScript"],
+    "Languages": ["Java", "Python", "C#", "JavaScript"],
     "AI/ML": ["TensorFlow", "Langchain", "CNN", "Pandas", "Numpy", "Scikit-learn"],
-    "Web Dev": ["Django", "Next.js", "React", "HTML", "CSS", "JavaScript"],
-    "Databases": ["MySQL", "MongoDB", "Firebase", "API Integration"],
+    "Web Dev": [".NET", "Django", "Next.js", "React", "HTML", "CSS"],
+    "Databases": ["MySQL", "MongoDB", "API Integration"],
     "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse", "n8n Engine"],
-    "Skills": ["Data Science", "AI Automation", "Data Structure", "OOPs", "DBMS", "Operating System"]
+    "Skills": ["Data Science", "Data Structure", "OOPs", "DBMS", "Operating System"]
   };
 
   const achievements = [
@@ -609,7 +617,7 @@ const Portfolio = () => {
             <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Work Experience
             </h2>
-            <p className="text-gray-400 text-xl">Building expertise through diverse internships</p>
+            <p className="text-gray-400 text-xl">Building expertise through diverse Work and internships</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -903,7 +911,7 @@ const Portfolio = () => {
           </p>
 
           <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-            I'm a recent graduate in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
+            I have graduated in Information Science and Engineering at Cambridge Institute of Technology with a CGPA of 8.8.
             Through multiple internships at <span className="text-cyan-400">ORANTS AI, Capgemini, Samsung Innovation Campus, and Varcons Technologies</span>,
             I have gained hands-on experience in AI/ML, data science, and full-stack development.
           </p>
@@ -1076,10 +1084,10 @@ const Portfolio = () => {
               Built with <a href="/assets/learning.pdf"
                 target="_blank"
                 rel="noopener noreferrer">💜</a> using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span> | <a href="/assets/portfolio-report.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
-              >
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
+                >
                 Portfolio Analysed Report
               </a>.
             </p>
