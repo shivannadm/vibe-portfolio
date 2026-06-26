@@ -116,7 +116,7 @@ const Portfolio = () => {
     {
       company: "ORANTS AI",
       role: "AI Engineer Intern",
-      period: "October 2025 - March 2026",
+      period: "October 2025 - January 2026",
       description: "Working on cutting-edge AI projects including influencer tracking, content generation, and intelligent application development.",
       icon: "🤖",
       highlights: ["AI Development", "Content Generation", "AI Automation", "Data Science", "Vibe coding", "n8n Engine", "Prompt Engineering", "Problem Solving"]
