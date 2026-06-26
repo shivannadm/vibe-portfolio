@@ -116,7 +116,7 @@ const Portfolio = () => {
     {
       company: "ORANTS AI",
       role: "AI Engineer Intern",
-      period: "October 2025 - Present",
+      period: "October 2025 - March 2026",
       description: "Working on cutting-edge AI projects including influencer tracking, content generation, and intelligent application development.",
       icon: "🤖",
       highlights: ["AI Development", "Content Generation", "AI Automation", "Data Science", "Vibe coding", "n8n Engine", "Prompt Engineering", "Problem Solving"]
@@ -1073,7 +1073,9 @@ const Portfolio = () => {
           )}
           <div className="border-t border-purple-500/30 pt-8 mt-12">
             <p className="text-gray-400 mb-2">
-              Built with 💜 using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span> | <a href="/assets/portfolio-report.pdf"
+              Built with <a href="/assets/learning.pdf"
+                target="_blank"
+                rel="noopener noreferrer">💜</a> using <span className="text-purple-400">Next.js</span>, <span className="text-cyan-400">React</span>, and <span className="text-pink-400">Tailwind CSS</span> | <a href="/assets/portfolio-report.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/50 hover:decoration-purple-400 transition"
