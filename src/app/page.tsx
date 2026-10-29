@@ -115,11 +115,11 @@ const Portfolio = () => {
   const internships = [
     {
       company: "TCS - Tata Consultancy Services",
-      role: "Software Engineer",
+      role: "Associate System Engineer",
       period: "April 2026 - Present",
-      description: "Working on cloud-based solutions and full-stack development.",
+      description: "Gaining hands-on experience in application development, page design, domain modeling, security configuration, microflows, and Object Query Language (OQL).\n Designed and developed a Training Tracker System as a practical project, implementing domain models, user interfaces, application logic, and data management to support training-related workflows.",
       icon: "👨🏻‍💻",
-      highlights: ["Full-stack Development", "Cloud Computing", "Problem Solving"]
+      highlights: ["Medix Studio Pro", "Git", "Team Server", "API", "Full-stack Development", "JAVA", "RDBMS", "Problem Solving"]
     },
     {
       company: "ORANTS AI",
