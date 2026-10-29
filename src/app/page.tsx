@@ -119,7 +119,7 @@ const Portfolio = () => {
       period: "April 2026 - Present",
       description: "Gaining hands-on experience in application development, page design, domain modeling, security configuration, microflows, and Object Query Language (OQL).\n Designed and developed a Training Tracker System as a practical project, implementing domain models, user interfaces, application logic, and data management to support training-related workflows.",
       icon: "👨🏻‍💻",
-      highlights: ["Medix Studio Pro", "Git", "Team Server", "API", "Full-stack Development", "JAVA", "RDBMS", "Problem Solving"]
+      highlights: ["Mendix Studio Pro", "Git", "Team Server", "API", "Full-stack Development", "JAVA", "RDBMS", "Problem Solving"]
     },
     {
       company: "ORANTS AI",
@@ -192,9 +192,9 @@ const Portfolio = () => {
     "Languages": ["Java", "Python", "C#", "JavaScript"],
     "AI/ML": ["TensorFlow", "Langchain", "CNN", "Pandas", "Numpy", "Scikit-learn"],
     "Web Dev": [".NET", "Django", "Next.js", "React", "HTML", "CSS"],
-    "Databases": ["MySQL", "MongoDB", "API Integration"],
-    "Tools": ["GitHub", "JIRA", "VS Code", "PyCharm", "Eclipse", "n8n Engine"],
-    "Skills": ["Data Science", "Data Structure", "OOPs", "DBMS", "Operating System"]
+    "Databases": ["MySQL", "RDBMS", "MongoDB", "API Integration"],
+    "Tools": ["Mendix Studio Pro", "Git", "Team Server", "GitHub", "JIRA", "VS Code", "Eclipse", "n8n Engine"],
+    "Skills": ["Mendix Portal", "Data Science", "Data Structure", "OOPs", "DBMS", "Operating System"]
   };
 
   const achievements = [
